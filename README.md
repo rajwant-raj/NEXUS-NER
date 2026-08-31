@@ -1,1049 +1,441 @@
-# NEXUS-NER
+# NEXUS-NER 🚚🌧️
 
-## AI-Based Smart Logistics & Accessibility Intelligence Platform for the North Eastern Region
+## AI-Powered Smart Logistics & Accessibility Intelligence Platform for North Eastern Region
 
-> **Smart India Hackathon 2026 — SIH26002**
-> **Theme:** Smart Automation
-> **Goal:** Build an AI-powered logistics and accessibility intelligence platform that monitors transportation conditions, predicts disruptions, recommends safer routes, tracks vehicles, supports field reporting, and helps authorities make faster logistics decisions.
+**Smart India Hackathon 2026 — SIH26002**
 
----
-
-# 1. Project Vision
-
-NEXUS-NER is a centralized AI-powered logistics intelligence platform designed for the North Eastern Region of India.
-
-The platform combines:
-
-* GIS and geospatial intelligence
-* Real-time vehicle tracking
-* Road accessibility monitoring
-* AI/ML-based disruption prediction
-* Weather intelligence
-* Route optimization
-* Field incident reporting
-* Offline-first field operations
-* Automated alerts
-* Logistics analytics
-* Government command-center dashboards
-
-### Core principle
-
-> **Don't just visualize logistics problems. Detect them, predict them, and react to them.**
+> **Mission:** Monitor, predict, decide, and act on logistics disruptions across the North Eastern Region using GIS, AI/ML, weather intelligence, real-time vehicle tracking, field reporting, and intelligent route optimization.
 
 ---
 
-# 2. Problem We Are Solving
+# 1. Executive Summary
 
-The North Eastern Region has complex terrain, difficult connectivity, unpredictable weather, landslides, floods, road blockages, congestion, and other transportation disruptions.
+NEXUS-NER is an AI-powered logistics command platform designed to help authorities monitor transportation infrastructure, identify emerging disruptions, predict risk, optimize logistics routes, track vehicles, and respond to field incidents.
 
-These conditions can delay:
+The system brings together:
 
-* Medical supplies
-* Food supplies
-* Emergency resources
-* Construction materials
-* Agricultural supplies
-* Government logistics
+* 🗺️ GIS-based road intelligence
+* 🤖 AI/ML disruption-risk prediction
+* 🌧️ Weather intelligence
+* 🚚 Real-time vehicle tracking
+* 📍 Field incident reporting
+* 🛣️ Risk-aware route optimization
+* 🚨 Automated alerts
+* 📊 Logistics analytics
+* 📱 Offline-capable field reporting
 
-The platform should help authorities answer:
-
-1. Which roads are currently accessible?
-2. Which routes are at risk?
-3. Which vehicles are currently moving?
-4. Which deliveries are delayed?
-5. What disruptions are likely to happen?
-6. What is the safest route?
-7. Which incidents have been reported from the field?
-8. Should a vehicle be rerouted?
-9. Which districts or corridors require attention?
-10. What action should authorities take now?
-
----
-
-# 3. Product Concept
-
-## NEXUS-NER Command Center
-
-The final system should work like a logistics command center.
-
-### High-level workflow
+The prototype will demonstrate a complete operational loop:
 
 ```text
-Weather Data
-     |
-     v
-Risk Engine <------ Historical Incidents
-     |
-     v
-Road Accessibility
-     |
-     v
-Route Optimization <------ Traffic / Road Condition
-     |
-     v
-Vehicle Tracking
-     |
-     v
-Delivery Monitoring
-     |
-     +-------> Alerts
-     |
-     +-------> Analytics
-```
-
-Field reports continuously feed the same system:
-
-```text
-Field Officer
-     |
-     v
-Incident Report
-     |
-     v
-GIS Map
-     |
-     v
-Risk Update
-     |
-     v
-Route Recalculation
-     |
-     v
-Alert / Recommended Action
+MONITOR
+   ↓
+PREDICT
+   ↓
+DECIDE
+   ↓
+ACT
+   ↓
+MEASURE
 ```
 
 ---
 
-# 4. Main Product Modules
+# 2. The Problem
 
-## Module 1 — Government Command Dashboard
+The North Eastern Region faces logistics challenges caused by:
 
-### Purpose
+* difficult terrain
+* landslides
+* floods
+* heavy rainfall
+* road blockages
+* bridge damage
+* congestion
+* poor connectivity
+* delayed field reporting
+* limited real-time visibility
 
-Provide a centralized operational view of logistics activity across NER.
+A logistics authority needs to know:
 
-### Features
+```text
+What is happening?
+        ↓
+What will happen?
+        ↓
+Which route should we use?
+        ↓
+What action should we take?
+```
 
-* Live map
-* Vehicle locations
-* Road accessibility
-* Road risk
-* Incidents
-* Weather conditions
-* Active alerts
-* Delivery status
-* District statistics
-* Logistics analytics
-* Emergency routes
+NEXUS-NER is designed to answer all four.
 
-### Status
+---
 
-* [ ] Dashboard layout
-* [ ] Sidebar/navigation
+# 3. Our Core Innovation
+
+The platform is **not just a dashboard**.
+
+It forms a continuous decision loop:
+
+```text
+             REAL-TIME DATA
+                    │
+       ┌────────────┼────────────┐
+       │            │            │
+    Weather      Vehicles     Incidents
+       │            │            │
+       └────────────┼────────────┘
+                    ↓
+              AI RISK ENGINE
+                    ↓
+             ROAD RISK SCORE
+                    ↓
+           ROUTE OPTIMIZATION
+                    ↓
+            RECOMMENDED ACTION
+                    ↓
+              ALERT / REROUTE
+                    ↓
+              LOGISTICS RESULT
+```
+
+### Key principle
+
+> **Don't just visualize logistics problems. Predict them and help authorities act on them.**
+
+---
+
+# 4. Hackathon Strategy
+
+We have approximately **2 weeks**.
+
+Therefore, we will NOT attempt to build a full enterprise-scale production system.
+
+We will build:
+
+> **A polished, functional, end-to-end prototype that demonstrates the complete operational intelligence workflow.**
+
+### Priority
+
+```text
+WORKING SYSTEM
+      >
+FEATURE COUNT
+      >
+COMPLEXITY
+```
+
+A smaller system that actually works is better than a huge system with broken features.
+
+---
+
+# 5. Target Demo
+
+Our final demonstration will revolve around one real-world scenario.
+
+## Emergency Medical Delivery
+
+A vehicle carrying medical supplies travels from:
+
+```text
+Guwahati → Tawang
+```
+
+### Initial condition
+
+```text
+Vehicle:
+TRK-104
+
+Cargo:
+Medical Supplies
+
+Priority:
+Emergency
+
+Risk:
+LOW
+
+ETA:
+8h 35m
+```
+
+---
+
+## Event 1 — Heavy Rain
+
+Weather conditions deteriorate.
+
+```text
+Rainfall:
+95 mm/h
+```
+
+AI predicts:
+
+```text
+Disruption Probability:
+82%
+
+Risk:
+HIGH
+```
+
+---
+
+## Event 2 — Field Incident
+
+A field officer reports a rockfall.
+
+```text
+Incident:
+Landslide / Rockfall
+
+Severity:
+CRITICAL
+
+GPS:
+Automatic
+
+Photo:
+Attached
+```
+
+The incident appears on the command-center map.
+
+---
+
+## Event 3 — Road Becomes Blocked
+
+The affected road segment becomes:
+
+```text
+STATUS:
+BLOCKED
+```
+
+The alert engine generates:
+
+```text
+🚨 CRITICAL ALERT
+
+Road blockage detected.
+
+Vehicle TRK-104 is affected.
+
+Recommended action:
+Calculate alternative route.
+```
+
+---
+
+## Event 4 — Intelligent Rerouting
+
+The route engine compares alternatives.
+
+```text
+ROUTE A
+Blocked
+HIGH RISK
+
+ROUTE B
++39 minutes
+LOW RISK
+91% accessibility
+```
+
+System recommends:
+
+```text
+ROUTE B
+```
+
+Officer clicks:
+
+```text
+REROUTE VEHICLE
+```
+
+---
+
+## Event 5 — Vehicle Updates
+
+The vehicle changes its route.
+
+```text
+Old Route
+   ↓
+Blocked
+
+New Route
+   ↓
+Safe Alternative
+```
+
+ETA changes:
+
+```text
+8h 35m → 9h 14m
+```
+
+---
+
+## Event 6 — Final Result
+
+Dashboard shows:
+
+```text
+Vehicle:
+ON ROUTE
+
+Risk:
+LOW
+
+Route:
+ALTERNATIVE
+
+Status:
+DELIVERY CONTINUES
+```
+
+### This is our hero demo.
+
+---
+
+# 6. MVP Scope
+
+## 🔴 P0 — MUST WORK
+
+These features are mandatory.
+
+### Command Dashboard
+
+* [ ] Dashboard
 * [ ] KPI cards
 * [ ] Live map
 * [ ] Vehicle markers
 * [ ] Incident markers
-* [ ] Risk visualization
-* [ ] Accessibility visualization
-* [ ] Alert panel
-* [ ] Filters
-* [ ] Responsive design
-
-### Owner
-
-**Web Development Team**
-
----
-
-# 5. Module 2 — GIS & Mapping
-
-## Purpose
-
-Visualize the transportation network and logistics conditions geographically.
-
-### Features
-
-* NER map
-* Road segments
-* District boundaries
-* Vehicle locations
-* Incident markers
-* Risk heatmap
-* Accessibility layer
-* Route visualization
-* Selected road details
-* Selected vehicle details
-* Map filters
-* Map legend
-
-### Technologies
-
-* MapLibre / Leaflet
-* OpenStreetMap data
-* PostGIS
-* GeoJSON
-
-### Status
-
-* [ ] Base map
-* [ ] NER geographic data
-* [ ] Road network
-* [ ] District boundaries
-* [ ] Incident layer
-* [ ] Vehicle layer
-* [ ] Risk layer
-* [ ] Accessibility layer
+* [ ] Alerts
 * [ ] Route visualization
 
-### Owner
+### GIS
 
-**GIS/Web Team**
+* [ ] NER map
+* [ ] Road network
+* [ ] Road status
+* [ ] Risk visualization
+* [ ] Vehicle locations
 
----
+### Vehicle Tracking
 
-# 6. Module 3 — Backend/API
-
-## Purpose
-
-Provide the central application services and connect all modules.
-
-### Technology
-
-* Python
-* FastAPI
-* PostgreSQL
-* PostGIS
-* WebSockets
-
-### Responsibilities
-
-* Authentication
-* Database operations
-* Vehicle data
-* Incident management
-* Route requests
-* Risk calculations
-* Alerts
-* Weather data
-* Analytics
-* WebSocket communication
-
-### API Structure
-
-```text
-/auth
-/dashboard
-/vehicles
-/telemetry
-/incidents
-/routes
-/risk
-/weather
-/alerts
-/deliveries
-/districts
-/analytics
-```
-
-### Status
-
-* [ ] FastAPI project
-* [ ] API structure
-* [ ] Database connection
-* [ ] Authentication
-* [ ] Vehicle APIs
-* [ ] Incident APIs
-* [ ] Route APIs
-* [ ] Risk APIs
-* [ ] Weather APIs
-* [ ] Alert APIs
-* [ ] Analytics APIs
-* [ ] WebSocket APIs
-
-### Owner
-
-**Backend Team**
-
----
-
-# 7. Module 4 — Database
-
-## Technology
-
-**PostgreSQL + PostGIS**
-
-### Main Tables
-
-```text
-users
-vehicles
-road_segments
-districts
-incidents
-field_reports
-weather_observations
-deliveries
-gps_points
-alerts
-route_predictions
-```
-
-### Example: vehicles
-
-```text
-id
-vehicle_number
-vehicle_type
-driver
-cargo_type
-status
-latitude
-longitude
-speed
-heading
-destination
-last_updated
-```
-
-### Example: incidents
-
-```text
-id
-incident_type
-severity
-latitude
-longitude
-description
-photo_url
-reported_by
-status
-created_at
-updated_at
-```
-
-### Example: road_segments
-
-```text
-id
-road_name
-geometry
-road_condition
-accessibility_score
-risk_score
-speed_limit
-status
-```
-
-### Status
-
-* [ ] Schema design
-* [ ] Models
-* [ ] Migrations
-* [ ] PostGIS support
-* [ ] Indexes
-* [ ] Seed data
-* [ ] Sample roads
-* [ ] Sample vehicles
-* [ ] Sample incidents
-* [ ] Sample deliveries
-
-### Owner
-
-**Backend Team + GIS Team**
-
----
-
-# 8. Module 5 — Vehicle Tracking
-
-## Purpose
-
-Track logistics vehicles in real time.
-
-### Features
-
-* GPS telemetry
-* Vehicle location
-* Speed
-* Heading
-* Status
-* Destination
-* ETA
-* Last updated time
-* Route progress
-* Live map movement
-
-### Architecture
-
-```text
-GPS Simulator
-      |
-      v
-Telemetry API
-      |
-      v
-Backend
-      |
-      v
-WebSocket
-      |
-      v
-Live Dashboard
-```
-
-### Development approach
-
-Since real trucks/devices are not available during development, create a **GPS simulator**.
-
-The simulator should:
-
-* Move vehicles along predefined routes
-* Send telemetry periodically
-* Update latitude/longitude
-* Change speed
-* Simulate delays
-* Simulate route changes
-
-### Status
-
-* [ ] Vehicle model
-* [ ] Telemetry API
 * [ ] GPS simulator
-* [ ] WebSocket
-* [ ] Live markers
-* [ ] Vehicle detail panel
+* [ ] Vehicle positions
+* [ ] Live updates
+* [ ] Vehicle status
 * [ ] ETA
-* [ ] Route progress
 
-### Owner
+### Incident Reporting
 
-**Backend Team + Web Team**
+* [ ] Incident form
+* [ ] GPS location
+* [ ] Severity
+* [ ] Description
+* [ ] Photo
+* [ ] Dashboard integration
 
----
+### AI/Risk
 
-# 9. Module 6 — AI/ML Risk Prediction
-
-## Purpose
-
-Predict whether a road segment is likely to become disrupted.
-
-### Prediction Target
-
-```text
-Probability of road disruption
-within a future time window
-```
-
-### Input Features
-
-```text
-rainfall
-rainfall_change
-temperature
-road_condition
-historical_incidents
-slope
-traffic
-river_proximity
-previous_disruptions
-```
-
-### Output
-
-```text
-probability
-risk_level
-contributing_factors
-```
-
-Example:
-
-```text
-Disruption Probability: 82%
-
-Risk Level: HIGH
-
-Contributing Factors:
-- Heavy rainfall
-- Poor road condition
-- High historical incident frequency
-```
-
-### Suggested models
-
-Start with:
-
-* Random Forest
-* XGBoost
-
-Do not build an unnecessarily complex deep-learning system unless there is a clear reason.
-
-### Important rule
-
-Synthetic/demo data must be clearly identified.
-
-Do not present synthetic-data accuracy as real-world model accuracy.
-
-### Status
-
-* [ ] Dataset structure
-* [ ] Synthetic/sample dataset
-* [ ] Feature engineering
-* [ ] Training pipeline
-* [ ] Validation
-* [ ] Model serialization
-* [ ] Prediction API
+* [ ] Risk calculation
+* [ ] Disruption probability
 * [ ] Risk categories
 * [ ] Explainable factors
-* [ ] Integration with route engine
 
-### Owner
+### Routing
 
-**AI/ML Team**
-
----
-
-# 10. Module 7 — Risk Scoring Engine
-
-The AI model does not have to be the only source of risk.
-
-Combine:
-
-```text
-Weather
-+
-Road Condition
-+
-Traffic
-+
-Historical Incidents
-+
-AI Prediction
-+
-Accessibility
-```
-
-Example scoring concept:
-
-```text
-Risk Score =
-
-30% Weather Risk
-20% Landslide/Flood Risk
-15% Historical Incident Risk
-15% Road Condition
-10% Traffic
-10% Other Factors
-```
-
-Normalize:
-
-```text
-0.00 - 0.25 = SAFE
-0.25 - 0.50 = MODERATE
-0.50 - 0.75 = HIGH
-0.75 - 1.00 = CRITICAL
-```
-
-### Status
-
-* [ ] Risk formula
-* [ ] Risk normalization
-* [ ] Road risk calculation
-* [ ] AI integration
-* [ ] Risk API
-* [ ] Map visualization
-* [ ] Risk explanation
-
-### Owner
-
-**AI/ML Team + Backend Team**
-
----
-
-# 11. Module 8 — Route Optimization
-
-## Purpose
-
-Find the best route based on more than distance.
-
-### Important principle
-
-The shortest route is not always the best route.
-
-A route should consider:
-
-```text
-Distance
-Travel Time
-Risk
-Road Condition
-Accessibility
-Traffic
-Weather
-Disruption Probability
-Cargo Priority
-```
-
-### Route types
-
-```text
-FASTEST
-SAFEST
-BALANCED
-```
-
-### Input
-
-```text
-origin
-destination
-cargo_type
-priority
-```
-
-### Output
-
-```text
-recommended_route
-alternative_routes
-ETA
-distance
-risk_score
-reasoning
-```
-
-Example:
-
-```text
-Recommended Route: Route B
-
-Reason:
-Route A currently has high rainfall and
-landslide risk.
-
-Route B:
-+39 minutes
-LOW risk
-91% accessibility
-```
-
-### Graph Model
-
-```text
-Node = location / intersection
-
-Edge = road segment
-```
-
-Each edge contains:
-
-```text
-distance
-travel_time
-risk_score
-accessibility
-traffic
-road_condition
-```
-
-### Status
-
-* [ ] Graph representation
-* [ ] Road graph
-* [ ] Cost function
 * [ ] Fastest route
 * [ ] Safest route
-* [ ] Balanced route
-* [ ] Risk-aware routing
-* [ ] API
-* [ ] Frontend visualization
-* [ ] Explainable route selection
+* [ ] Recommended route
+* [ ] Alternative route
 
-### Owner
+### Alerts
 
-**AI/ML Team + Backend/GIS Team**
-
----
-
-# 12. Module 9 — Weather Intelligence
-
-## Purpose
-
-Use weather information to improve risk prediction and routing.
-
-### Data
-
-```text
-rainfall
-temperature
-forecast
-precipitation
-severe-weather indicator
-```
-
-### Architecture
-
-Create a provider abstraction:
-
-```python
-WeatherProvider
-```
-
-Implement:
-
-```text
-MockWeatherProvider
-ExternalWeatherProvider
-```
-
-This allows development without depending on an external API.
-
-### Demo weather scenarios
-
-```text
-NORMAL
-HEAVY RAIN
-EXTREME RAIN
-FLOOD RISK
-```
-
-### Status
-
-* [ ] Weather abstraction
-* [ ] Mock provider
-* [ ] External provider
-* [ ] Weather storage
-* [ ] Forecast support
-* [ ] Risk integration
-* [ ] Demo scenarios
-
-### Owner
-
-**AI/ML Team + Backend Team**
+* [ ] Critical alerts
+* [ ] Risk alerts
+* [ ] Road blockage alerts
+* [ ] Vehicle delay alerts
 
 ---
 
-# 13. Module 10 — Field Incident Reporting
+# 7. 🟡 P1 — SHOULD WORK
 
-## Purpose
+Build these once P0 is stable.
 
-Allow field officers to report transportation problems.
-
-### Incident types
-
-```text
-Landslide
-Flood
-Road Blockage
-Bridge Damage
-Accident
-Congestion
-Weather Hazard
-Other
-```
-
-### Report fields
-
-```text
-incident_type
-severity
-GPS_location
-timestamp
-description
-photo
-reporter
-```
-
-### Mobile-first workflow
-
-```text
-Open Reporting App
-       |
-       v
-Capture GPS
-       |
-       v
-Select Incident
-       |
-       v
-Take Photo
-       |
-       v
-Submit
-       |
-       v
-Command Center
-```
-
-### Status
-
-* [ ] Mobile UI
-* [ ] GPS capture
-* [ ] Incident form
-* [ ] Image upload
-* [ ] API
-* [ ] Database storage
-* [ ] Dashboard integration
-* [ ] Notifications
-
-### Owner
-
-**Mobile/Web Team + Backend Team**
-
----
-
-# 14. Module 11 — Offline-First Field Reporting
-
-This is an important feature.
-
-Field locations may have poor connectivity.
-
-### Online
-
-```text
-Report
- ↓
-API
- ↓
-Database
-```
-
-### Offline
-
-```text
-Report
- ↓
-Local Storage / IndexedDB
- ↓
-Pending Queue
- ↓
-Connection Restored
- ↓
-Automatic Sync
- ↓
-Server
-```
-
-### Required behavior
-
-* Detect offline mode
-* Save reports locally
-* Display pending reports
-* Retry failed sync
-* Sync automatically
-* Prevent duplicate submissions
-* Show synchronization status
-
-### Status
-
-* [ ] Offline detection
-* [ ] Local database/storage
-* [ ] Queue
-* [ ] Sync API
-* [ ] Retry logic
-* [ ] Duplicate prevention
-* [ ] Sync indicators
-
-### Owner
-
-**Mobile/Web Team**
-
----
-
-# 15. Module 12 — Alert Engine
-
-## Purpose
-
-Automatically identify situations that require attention.
-
-### Alert types
-
-```text
-Road Blockage
-High Risk
-Severe Weather
-Vehicle Delay
-Delivery Delay
-Critical Incident
-Low Accessibility
-Route Disruption
-```
-
-### Alert severity
-
-```text
-INFO
-WARNING
-HIGH
-CRITICAL
-```
-
-### Example
-
-```text
-CRITICAL ALERT
-
-NH-13 Corridor
-
-Disruption Probability: 81%
-
-Cause:
-Heavy rainfall + historical landslide risk
-
-Recommended Action:
-Reroute vehicles through Route B
-```
-
-### Status
-
-* [ ] Alert rules
-* [ ] Risk-triggered alerts
-* [ ] Incident-triggered alerts
-* [ ] Vehicle-delay alerts
-* [ ] Alert database
-* [ ] WebSocket notifications
+* [ ] Weather integration
+* [ ] Offline incident queue
+* [ ] Automatic sync
+* [ ] Basic analytics
+* [ ] Delivery tracking
+* [ ] District accessibility score
 * [ ] Alert acknowledgement
-* [ ] Alert filtering
-
-### Owner
-
-**Backend Team + AI/ML Team**
 
 ---
 
-# 16. Module 13 — Logistics & Delivery Management
+# 8. 🟢 P2 — OPTIONAL
 
-## Purpose
+Only build if everything else is stable.
 
-Track the movement of essential supplies.
-
-### Cargo categories
-
-```text
-Medical
-Food
-Agriculture
-Construction
-Emergency
-Government
-Other
-```
-
-### Delivery fields
-
-```text
-delivery_id
-vehicle_id
-origin
-destination
-cargo_type
-priority
-expected_delivery
-actual_delivery
-status
-route_id
-```
-
-### Status
-
-```text
-PLANNED
-LOADING
-IN_TRANSIT
-DELAYED
-REROUTED
-DELIVERED
-CANCELLED
-```
-
-### Owner
-
-**Backend Team + Web Team**
+* [ ] Advanced multilingual interface
+* [ ] Advanced ML
+* [ ] IoT integration
+* [ ] Satellite data
+* [ ] Advanced forecasting
+* [ ] Complex role management
+* [ ] Advanced cloud scaling
+* [ ] 3D map
 
 ---
 
-# 17. Module 14 — Analytics
-
-## Dashboard metrics
+# 9. Architecture
 
 ```text
-Active Vehicles
-Active Incidents
-At-Risk Corridors
-Deliveries Today
-On-Time Delivery %
-Average Delay
-Vehicle Utilization
-Incident Frequency
-District Accessibility
-Risk Trends
-```
-
-### Charts
-
-* Delivery trends
-* Incident frequency
-* Risk trends
-* Vehicle activity
-* Cargo distribution
-* District accessibility
-* Average delay
-
-### Important rule
-
-Every displayed metric must come from actual application data.
-
-Do not hard-code fake analytics into the final dashboard.
-
-### Owner
-
-**Web Team + Backend Team**
-
----
-
-# 18. System Architecture
-
-```text
-                        ┌──────────────────────┐
-                        │   NEXUS-NER WEB UI   │
-                        │ Next.js + TypeScript │
-                        └──────────┬───────────┘
-                                   │
-                         REST / WebSocket
-                                   │
-                        ┌──────────▼───────────┐
-                        │      FASTAPI         │
-                        │      Backend         │
-                        └───────┬─────┬────────┘
-                                │     │
-                ┌───────────────┘     └───────────────┐
-                │                                     │
-        ┌───────▼────────┐                    ┌───────▼────────┐
-        │ PostgreSQL     │                    │ AI/ML Engine   │
-        │ + PostGIS      │                    │                │
-        └────────────────┘                    └───────┬────────┘
-                                                       │
-                                  ┌────────────────────┼──────────────────┐
-                                  │                    │                  │
-                             Risk Model          Route Engine         Weather
-                                  │                    │                  │
-                                  └────────────────────┼──────────────────┘
-                                                       │
-                                                Decision Engine
-                                                       │
-                              ┌────────────────────────┼───────────────────────┐
-                              │                        │                       │
-                         Alerts                  Vehicles               Deliveries
-                              │                        │                       │
-                              └────────────────────────┼───────────────────────┘
-                                                       │
-                                            Command Center / Field App
+                         NEXUS-NER
+                             │
+                ┌────────────┴────────────┐
+                │                         │
+             WEB APP                 FIELD APP
+                │                         │
+                └────────────┬────────────┘
+                             │
+                      REST / WebSocket
+                             │
+                    ┌────────▼────────┐
+                    │    FASTAPI      │
+                    │     BACKEND     │
+                    └───────┬─────────┘
+                            │
+          ┌─────────────────┼─────────────────┐
+          │                 │                 │
+          ▼                 ▼                 ▼
+      PostgreSQL         AI/ML           Route Engine
+      + PostGIS         Engine
+          │                 │                 │
+          │                 ▼                 │
+          │            Risk Score             │
+          │                 │                 │
+          └─────────────────┼─────────────────┘
+                            │
+                    ┌───────▼────────┐
+                    │ Alert Engine   │
+                    └───────┬────────┘
+                            │
+                    ┌───────▼────────┐
+                    │ Live Dashboard  │
+                    └────────────────┘
 ```
 
 ---
 
-# 19. Recommended Tech Stack
+# 10. Technology Stack
 
 ## Frontend
 
@@ -1092,21 +484,14 @@ PostGIS
 MapLibre / Leaflet
 ```
 
-## Mobile
-
-Preferred options:
+## Mobile / Field Application
 
 ```text
-Progressive Web App
+Responsive PWA
+IndexedDB
+Browser GPS
+Camera / File Upload
 ```
-
-or:
-
-```text
-React Native
-```
-
-For a hackathon prototype, a strong mobile-responsive PWA is acceptable and faster to develop.
 
 ## DevOps
 
@@ -1120,1127 +505,578 @@ CI/CD
 
 ---
 
-# 20. Repository Structure
+# 11. Team Structure
 
-```text
-nexus-ner/
-│
-├── apps/
-│   ├── web/
-│   │   ├── app/
-│   │   ├── components/
-│   │   ├── features/
-│   │   ├── hooks/
-│   │   ├── lib/
-│   │   └── types/
-│   │
-│   └── mobile/
-│       ├── screens/
-│       ├── components/
-│       ├── services/
-│       ├── storage/
-│       └── sync/
-│
-├── services/
-│   ├── api/
-│   │   ├── app/
-│   │   │   ├── api/
-│   │   │   ├── models/
-│   │   │   ├── schemas/
-│   │   │   ├── services/
-│   │   │   ├── routing/
-│   │   │   ├── alerts/
-│   │   │   ├── telemetry/
-│   │   │   └── main.py
-│   │   └── tests/
-│   │
-│   └── ml/
-│       ├── data/
-│       ├── notebooks/
-│       ├── features/
-│       ├── models/
-│       ├── training/
-│       ├── inference/
-│       └── tests/
-│
-├── database/
-│   ├── migrations/
-│   ├── seeds/
-│   └── schema/
-│
-├── packages/
-│   ├── types/
-│   └── ui/
-│
-├── simulator/
-│   ├── gps/
-│   ├── weather/
-│   └── incidents/
-│
-├── docs/
-│   ├── architecture/
-│   ├── api/
-│   ├── ai/
-│   ├── database/
-│   └── demo/
-│
-├── docker/
-│
-├── .env.example
-├── docker-compose.yml
-├── README.md
-└── package.json
-```
+Recommended team size: **6 members**
+
+| Member | Role                 | Primary Ownership                |
+| ------ | -------------------- | -------------------------------- |
+| 1      | Frontend Lead        | Dashboard, UI, Map Interface     |
+| 2      | Backend Lead         | API, Database, WebSockets        |
+| 3      | AI/ML Engineer       | Prediction, Risk Engine          |
+| 4      | GIS/Routing Engineer | GIS, Roads, Route Optimization   |
+| 5      | Mobile Engineer      | Field Reporting, Offline         |
+| 6      | DevOps/Integration   | Deployment, Testing, Integration |
 
 ---
 
-# 21. Team Structure
+# 12. Member 1 — Frontend Lead
 
-Recommended team division for 6 members:
-
-| Member   | Role                   | Main Responsibility            |
-| -------- | ---------------------- | ------------------------------ |
-| Member 1 | Frontend Lead          | Dashboard/UI                   |
-| Member 2 | Backend Lead           | FastAPI/API/Database           |
-| Member 3 | AI/ML Engineer         | Prediction/Risk                |
-| Member 4 | GIS + Routing Engineer | Maps/Graph/Route Optimization  |
-| Member 5 | Mobile Engineer        | Field Reporting/Offline        |
-| Member 6 | Integration + DevOps   | Deployment/Testing/Integration |
-
----
-
-# 22. Role Responsibilities
-
-## MEMBER 1 — Frontend Lead
-
-### Owns
+## Responsibilities
 
 ```text
 Dashboard
-UI system
-Navigation
-Charts
-Map integration
-Vehicle panels
-Alert panels
+UI/UX
+Map UI
+Vehicle interface
+Incident interface
+Route interface
+Alert interface
 Analytics
 ```
 
-### Deliverables
+## Deliverables
 
-* [ ] Dashboard
-* [ ] Map interface
+* [ ] Dashboard shell
+* [ ] Sidebar
 * [ ] KPI cards
-* [ ] Vehicle UI
-* [ ] Incident UI
-* [ ] Route UI
-* [ ] Alert UI
-* [ ] Analytics UI
+* [ ] Map
+* [ ] Vehicle panel
+* [ ] Incident panel
+* [ ] Route panel
+* [ ] Alert panel
+* [ ] Analytics
 * [ ] Responsive design
+* [ ] Loading states
+* [ ] Error states
+
+## Main Goal
+
+> Make the prototype look like a professional command center.
 
 ---
 
-# 23. MEMBER 2 — Backend Lead
+# 13. Member 2 — Backend Lead
 
-### Owns
+## Responsibilities
 
 ```text
 FastAPI
 Database
-Authentication
 REST APIs
 WebSockets
 Business logic
+Authentication
 ```
 
-### Deliverables
+## Deliverables
 
-* [ ] API architecture
+* [ ] FastAPI structure
+* [ ] PostgreSQL
+* [ ] PostGIS
 * [ ] Database models
 * [ ] Migrations
+* [ ] Seed data
 * [ ] Vehicle API
 * [ ] Incident API
 * [ ] Route API
 * [ ] Risk API
 * [ ] Alert API
 * [ ] Weather API
-* [ ] Analytics API
+* [ ] Delivery API
 * [ ] WebSockets
+
+## Main Goal
+
+> Keep the entire system connected and reliable.
 
 ---
 
-# 24. MEMBER 3 — AI/ML Engineer
+# 14. Member 3 — AI/ML Engineer
 
-### Owns
+## Responsibilities
 
 ```text
-Data preparation
-Feature engineering
-Risk prediction
-Model training
+Dataset
+Feature Engineering
+Risk Prediction
+Risk Scoring
+Model Training
 Inference
-Model evaluation
 Explainability
 ```
 
-### Deliverables
+## Prediction Target
 
-* [ ] Dataset
-* [ ] Feature engineering
-* [ ] Training pipeline
-* [ ] Model
-* [ ] Evaluation
-* [ ] Risk score
-* [ ] Prediction API
-* [ ] Contributing factors
-* [ ] Route-risk integration
+```text
+Probability of road disruption
+```
+
+## Features
+
+```text
+rainfall
+rainfall change
+road condition
+historical incidents
+traffic
+slope
+river proximity
+previous disruptions
+```
+
+## Output
+
+```json
+{
+  "probability": 0.82,
+  "risk_level": "HIGH",
+  "factors": [
+    "heavy rainfall",
+    "poor road condition",
+    "historical landslide risk"
+  ]
+}
+```
+
+## Main Goal
+
+> Make the AI component functional, explainable, and connected to routing.
+
+### Important
+
+Do NOT claim real-world model accuracy from synthetic demo data.
 
 ---
 
-# 25. MEMBER 4 — GIS + Routing Engineer
+# 15. Member 4 — GIS + Routing Engineer
 
-### Owns
+## Responsibilities
 
 ```text
 Road network
 PostGIS
-Map data
-Graph construction
-Route optimization
+Map layers
 Geospatial queries
+Graph model
+Route optimization
+Accessibility
 ```
 
-### Deliverables
-
-* [ ] NER geographic data
-* [ ] Road network
-* [ ] PostGIS geometry
-* [ ] Graph model
-* [ ] Shortest path
-* [ ] Safest path
-* [ ] Balanced route
-* [ ] Risk-aware routing
-* [ ] Map layers
-
----
-
-# 26. MEMBER 5 — Mobile Engineer
-
-### Owns
+## Route Types
 
 ```text
-Field application
-GPS
-Incident reporting
-Photo upload
-Offline storage
-Sync
+FASTEST
+SAFEST
+BALANCED
 ```
 
-### Deliverables
+## Route Inputs
 
-* [ ] Mobile UI
-* [ ] GPS
-* [ ] Report form
-* [ ] Photo capture
-* [ ] Offline mode
-* [ ] Local queue
-* [ ] Sync engine
-* [ ] Retry mechanism
+```text
+origin
+destination
+cargo type
+priority
+```
+
+## Route Factors
+
+```text
+distance
+travel time
+risk
+accessibility
+traffic
+road condition
+weather
+```
+
+## Main Goal
+
+> Ensure a disruption can cause the recommended route to change.
 
 ---
 
-# 27. MEMBER 6 — Integration / DevOps
+# 16. Member 5 — Mobile / Field Engineer
 
-### Owns
+## Responsibilities
+
+```text
+Field reporting
+GPS
+Photo
+Offline storage
+Synchronization
+```
+
+## Required Flow
+
+```text
+Field Officer
+     ↓
+Capture GPS
+     ↓
+Select Incident
+     ↓
+Take Photo
+     ↓
+Submit
+     ↓
+Command Center
+```
+
+## Offline Flow
+
+```text
+NO INTERNET
+     ↓
+Save locally
+     ↓
+Pending queue
+     ↓
+Internet restored
+     ↓
+Sync automatically
+```
+
+## Main Goal
+
+> Prove that field information can reach the command center even under unreliable connectivity.
+
+---
+
+# 17. Member 6 — DevOps / Integration
+
+## Responsibilities
 
 ```text
 Git
 Docker
-Environment
+CI/CD
 Deployment
 Testing
-CI/CD
-System integration
-Demo environment
+Environment
+Integration
+Simulation
 ```
 
-### Deliverables
+## Deliverables
 
-* [ ] Repository setup
-* [ ] Docker
-* [ ] Docker Compose
-* [ ] Environment configuration
-* [ ] CI/CD
-* [ ] Integration tests
-* [ ] Deployment
-* [ ] Monitoring
-* [ ] Demo setup
-
----
-
-# 28. Development Phases
-
-# PHASE 0 — Planning & Architecture
-
-## Objective
-
-Freeze the architecture before development.
-
-### Tasks
-
-* [ ] Finalize feature list
-* [ ] Finalize tech stack
-* [ ] Create repository
-* [ ] Define team roles
-* [ ] Define database schema
-* [ ] Define API contracts
-* [ ] Define UI structure
-* [ ] Define demo scenario
-
-### Exit Criteria
-
-Everyone knows:
-
-```text
-What are we building?
-Who owns it?
-Which API connects it?
-What does done mean?
-```
-
----
-
-# PHASE 1 — Project Foundation
-
-## Objective
-
-Create a working development environment.
-
-### Tasks
-
-* [ ] Monorepo
-* [ ] Next.js
-* [ ] FastAPI
-* [ ] PostgreSQL
-* [ ] PostGIS
-* [ ] Docker
 * [ ] Docker Compose
 * [ ] Environment variables
-* [ ] Git conventions
-* [ ] README
-* [ ] Health-check API
+* [ ] CI pipeline
+* [ ] Database deployment
+* [ ] Backend deployment
+* [ ] Frontend deployment
+* [ ] Demo simulator
+* [ ] Integration tests
+* [ ] Deployment documentation
 
-### Exit Criteria
+## Main Goal
 
-One command should start the development environment.
+> Make the complete prototype runnable from one environment.
 
-```bash
-docker compose up
+---
+
+# 18. Database
+
+## Core Tables
+
+```text
+users
+vehicles
+road_segments
+districts
+incidents
+field_reports
+weather_observations
+deliveries
+gps_points
+alerts
+route_predictions
 ```
 
 ---
 
-# PHASE 2 — Database & Seed Data
+# 19. Vehicle Model
 
-## Objective
-
-Create the core data layer.
-
-### Tasks
-
-* [ ] Database schema
-* [ ] Models
-* [ ] Migrations
-* [ ] Seed scripts
-* [ ] NER districts
-* [ ] Roads
-* [ ] Vehicles
-* [ ] Incidents
-* [ ] Deliveries
-* [ ] Weather
-* [ ] Alerts
-
-### Exit Criteria
-
-The API can retrieve realistic demo data.
+```text
+id
+vehicle_number
+vehicle_type
+driver
+cargo_type
+status
+latitude
+longitude
+speed
+heading
+destination
+last_updated
+```
 
 ---
 
-# PHASE 3 — Command Dashboard
+# 20. Incident Model
 
-## Objective
-
-Create the visible product.
-
-### Tasks
-
-* [ ] Dashboard layout
-* [ ] Sidebar
-* [ ] KPI cards
-* [ ] GIS map
-* [ ] Vehicle markers
-* [ ] Incident markers
-* [ ] Alerts
-* [ ] Filters
-* [ ] Road details
-* [ ] Vehicle details
-
-### Exit Criteria
-
-A judge can open the website and immediately understand the system.
+```text
+id
+incident_type
+severity
+latitude
+longitude
+description
+photo_url
+reported_by
+status
+created_at
+updated_at
+```
 
 ---
 
-# PHASE 4 — Vehicle Tracking
+# 21. Road Model
 
-## Objective
-
-Make the platform feel real-time.
-
-### Tasks
-
-* [ ] GPS simulator
-* [ ] Telemetry API
-* [ ] WebSocket
-* [ ] Live markers
-* [ ] Vehicle status
-* [ ] ETA
-* [ ] Route progress
-
-### Exit Criteria
-
-A simulated vehicle moves on the map without refreshing the page.
+```text
+id
+road_name
+geometry
+status
+road_condition
+accessibility_score
+risk_score
+speed_limit
+```
 
 ---
 
-# PHASE 5 — Field Reporting
+# 22. Delivery Model
 
-## Objective
-
-Connect the field to the command center.
-
-### Tasks
-
-* [ ] Mobile/PWA interface
-* [ ] GPS capture
-* [ ] Incident form
-* [ ] Photo upload
-* [ ] Backend storage
-* [ ] Dashboard integration
-
-### Exit Criteria
-
-A field incident appears on the central map.
+```text
+id
+vehicle_id
+origin
+destination
+cargo_type
+priority
+status
+eta
+route_id
+created_at
+updated_at
+```
 
 ---
 
-# PHASE 6 — Offline Support
+# 23. API Plan
 
-## Objective
+```text
+POST /auth/login
 
-Support disconnected field operations.
+GET /dashboard/overview
 
-### Tasks
+GET /vehicles
+GET /vehicles/{id}
+POST /telemetry
 
-* [ ] Offline detection
-* [ ] Local storage
-* [ ] Pending queue
-* [ ] Sync
-* [ ] Retry
-* [ ] Duplicate protection
+GET /roads
+GET /roads/{id}
 
-### Exit Criteria
+GET /incidents
+POST /incidents
+POST /incidents/sync
 
-Create a report while offline → reconnect → automatic synchronization.
+POST /routes/optimize
+GET /routes/{id}
 
----
+GET /risk/{road_id}
+POST /predictions/disruption
 
-# PHASE 7 — Weather Intelligence
+GET /weather
 
-## Objective
+GET /alerts
+POST /alerts/{id}/acknowledge
 
-Make environmental conditions influence the system.
+GET /deliveries
+GET /deliveries/{id}
 
-### Tasks
+GET /analytics
 
-* [ ] Weather provider
-* [ ] Mock weather
-* [ ] Forecast
-* [ ] Rainfall
-* [ ] Severe-weather signal
-* [ ] Weather-to-risk integration
-
-### Exit Criteria
-
-Changing weather changes road risk.
-
----
-
-# PHASE 8 — AI Risk Prediction
-
-## Objective
-
-Add predictive intelligence.
-
-### Tasks
-
-* [ ] Dataset
-* [ ] Feature engineering
-* [ ] Model training
-* [ ] Model evaluation
-* [ ] Prediction API
-* [ ] Risk score
-* [ ] Explainability
-* [ ] Dashboard integration
-
-### Exit Criteria
-
-System predicts road-disruption probability and explains major contributing factors.
+WebSocket:
+/ws/vehicles
+/ws/alerts
+```
 
 ---
 
-# PHASE 9 — Route Optimization
+# 24. Risk Engine
 
-## Objective
-
-Make the system capable of taking action.
-
-### Tasks
-
-* [ ] Graph
-* [ ] Edge weights
-* [ ] Fastest route
-* [ ] Safest route
-* [ ] Balanced route
-* [ ] Risk-aware route
-* [ ] Cargo priority
-* [ ] Alternative route
-* [ ] Route explanation
-
-### Exit Criteria
-
-A disruption changes the recommended route.
-
----
-
-# PHASE 10 — Alert Engine
-
-## Objective
-
-Automatically identify situations requiring intervention.
-
-### Tasks
-
-* [ ] Risk alerts
-* [ ] Incident alerts
-* [ ] Vehicle-delay alerts
-* [ ] Weather alerts
-* [ ] Delivery alerts
-* [ ] WebSocket notifications
-* [ ] Acknowledgement
-
-### Exit Criteria
-
-The platform automatically generates a meaningful alert from a simulated event.
-
----
-
-# PHASE 11 — Analytics
-
-## Objective
-
-Provide decision-support metrics.
-
-### Tasks
-
-* [ ] Delivery analytics
-* [ ] Vehicle analytics
-* [ ] Incident analytics
-* [ ] Risk trends
-* [ ] District accessibility
-* [ ] Cargo analytics
-
-### Exit Criteria
-
-All charts use real application data.
-
----
-
-# PHASE 12 — Integration
-
-## Objective
-
-Connect every subsystem.
-
-### Complete flow
+The system will combine multiple signals.
 
 ```text
 Weather
-   |
-   v
-Risk Prediction
-   |
-   v
-Road Risk
-   |
-   v
-Route Optimization
-   |
-   v
-Vehicle Tracking
-   |
-   v
-Delivery
-```
-
-And:
-
-```text
-Field Report
-   |
-   v
-Incident
-   |
-   v
-Risk Update
-   |
-   v
-Alert
-   |
-   v
-Route Recalculation
-   |
-   v
-Vehicle Rerouting
-```
-
-### Exit Criteria
-
-The complete end-to-end demo works without manual backend intervention.
-
----
-
-# PHASE 13 — Testing
-
-## Backend
-
-* [ ] Unit tests
-* [ ] API tests
-* [ ] Database tests
-* [ ] Route tests
-* [ ] Alert tests
-* [ ] WebSocket tests
-
-## Frontend
-
-* [ ] Component tests
-* [ ] API integration
-* [ ] Responsive testing
-* [ ] Map testing
-
-## AI/ML
-
-* [ ] Data validation
-* [ ] Model validation
-* [ ] Inference tests
-* [ ] Edge cases
-
-## Mobile
-
-* [ ] Offline testing
-* [ ] Sync testing
-* [ ] GPS testing
-* [ ] Upload testing
-
-## Integration
-
-* [ ] Incident → map
-* [ ] Weather → risk
-* [ ] Risk → alert
-* [ ] Risk → route
-* [ ] Route → vehicle
-* [ ] Vehicle → delivery
-
----
-
-# 29. Demo Scenario
-
-The entire final presentation should revolve around one realistic story.
-
-## Step 1 — Start Delivery
-
-```text
-Origin:
-Guwahati
-
-Destination:
-Tawang
-
-Cargo:
-Medical Supplies
-
-Priority:
-Emergency
-```
-
-System selects a route.
-
-```text
-ETA: 8h 35m
-Risk: LOW
-```
-
----
-
-## Step 2 — Weather Changes
-
-Simulate heavy rainfall.
-
-```text
-Rainfall:
-95 mm/h
-```
-
-Risk engine updates.
-
-```text
-Disruption Probability:
-74%
-
-Risk:
-HIGH
-```
-
----
-
-## Step 3 — Field Officer Reports Rockfall
-
-Field officer submits:
-
-```text
-Incident:
-Rockfall
-
-Severity:
-CRITICAL
-
-GPS:
-Automatic
-
-Photo:
-Attached
-```
-
-The incident appears on the command dashboard.
-
----
-
-## Step 4 — Road Becomes Blocked
-
-System changes road status:
-
-```text
-NH-13
-BLOCKED
-```
-
----
-
-## Step 5 — Route Automatically Re-evaluated
-
-System compares alternatives.
-
-```text
-Route A
-BLOCKED
-
-Route B
-+39 min
-LOW RISK
-91% ACCESSIBILITY
-```
-
-System recommends Route B.
-
----
-
-## Step 6 — Officer Approves Reroute
-
-Click:
-
-```text
-REROUTE VEHICLE
-```
-
-Vehicle route updates.
-
----
-
-## Step 7 — Alert
-
-```text
-CRITICAL
-
-Vehicle TRK-104 has been rerouted.
-
-Reason:
-Road blockage detected.
-
-Additional ETA:
-39 minutes.
-```
-
----
-
-## Step 8 — Delivery Continues
-
-Vehicle follows the alternative route.
-
-Dashboard updates:
-
-```text
-Vehicle:
-ON ROUTE
-
-Risk:
-LOW
-
-ETA:
-9h 14m
-```
-
----
-
-# 30. Killer Demo Moment
-
-The most important moment is:
-
-```text
-Weather worsens
-      ↓
-Risk increases
-      ↓
-Road becomes blocked
-      ↓
-Field report arrives
-      ↓
-AI evaluates alternatives
-      ↓
-New route selected
-      ↓
-Vehicle rerouted
-      ↓
-Authorities alerted
-```
-
-This demonstrates that the platform is **reactive and predictive**, not just a visualization tool.
-
----
-
-# 31. Priority System
-
-Not every feature has the same importance.
-
-## P0 — Must Work
-
-```text
-Command Dashboard
-GIS Map
-Vehicle Tracking
-Incident Reporting
-Risk Engine
-Route Optimization
-Alerts
-Demo Data
-```
-
-## P1 — High Value
-
-```text
++
+Road Condition
++
+Historical Incidents
++
+Traffic
++
 AI Prediction
-Weather Integration
-Offline Reporting
-WebSockets
-Analytics
-GPS Simulator
-```
-
-## P2 — Polish
-
-```text
-Multilingual UI
-Advanced Analytics
-Role Management
-Notification Channels
-Cloud Scaling
-Advanced ML
-```
-
----
-
-# 32. Definition of Done
-
-A feature is **NOT DONE** merely because the code exists.
-
-A feature is done only when:
-
-```text
-Code
 +
-API
-+
-Database
-+
-Frontend
-+
-Error Handling
-+
-Testing
-+
-Documentation
+Accessibility
 ```
 
-are completed where applicable.
-
-### Every team member must update
+Example:
 
 ```text
-Feature status
-Known bugs
-API dependencies
-Pending work
-Testing status
+Weather Risk       30%
+Landslide/Flood    20%
+Historical Risk    15%
+Road Condition     15%
+Traffic             10%
+Other               10%
+```
+
+## Risk Levels
+
+```text
+0.00–0.25
+SAFE
+
+0.25–0.50
+MODERATE
+
+0.50–0.75
+HIGH
+
+0.75–1.00
+CRITICAL
 ```
 
 ---
 
-# 33. Git Workflow
+# 25. Route Optimization Logic
 
-## Branches
-
-```text
-main
-develop
-feature/*
-bugfix/*
-```
-
-### Example
-
-```bash
-feature/vehicle-tracking
-feature/route-optimization
-feature/ml-risk-model
-feature/offline-sync
-```
-
-### Commit style
+Each road segment becomes a graph edge.
 
 ```text
-feat: add vehicle telemetry API
-feat: implement risk scoring
-fix: correct route cost calculation
-docs: update API documentation
-test: add incident API tests
-refactor: simplify alert service
+Node = Intersection / Location
+
+Edge = Road Segment
+```
+
+Each edge contains:
+
+```text
+distance
+travel_time
+risk_score
+accessibility
+traffic
+road_condition
+```
+
+Example cost:
+
+```text
+edge_cost =
+travel_time
+× risk_multiplier
+× accessibility_penalty
+```
+
+For emergency cargo:
+
+```text
+risk has higher importance
+```
+
+For non-critical cargo:
+
+```text
+travel time can have more importance
 ```
 
 ---
 
-# 34. Team Integration Rules
+# 26. Weather System
 
-### Rule 1
-
-Nobody directly changes another person's major module without communication.
-
-### Rule 2
-
-API contracts must be agreed upon before frontend/backend integration.
-
-### Rule 3
-
-Database schema changes must be documented.
-
-### Rule 4
-
-Never commit secrets.
-
-Use:
+Implement a provider abstraction.
 
 ```text
-.env
+WeatherProvider
 ```
 
-and commit:
+Implement:
 
 ```text
-.env.example
+MockWeatherProvider
+ExternalWeatherProvider
 ```
 
-### Rule 5
+### Demo scenarios
 
-Every completed feature must be tested.
-
-### Rule 6
-
-Do not merge a feature that breaks the main application.
-
-### Rule 7
-
-Keep demo data deterministic.
-
----
-
-# 35. API Contract Example
-
-## Optimize Route
-
-### Request
-
-```json
-{
-  "origin": {
-    "lat": 26.1445,
-    "lng": 91.7362
-  },
-  "destination": {
-    "lat": 27.586,
-    "lng": 91.859
-  },
-  "cargo_type": "medical",
-  "priority": "emergency"
-}
+```text
+NORMAL
+HEAVY RAIN
+EXTREME RAIN
+FLOOD RISK
 ```
 
-### Response
+The weather scenario must affect:
 
-```json
-{
-  "recommended_route": {
-    "id": "route_001",
-    "distance_km": 420,
-    "eta_minutes": 554,
-    "risk_score": 0.21,
-    "risk_level": "LOW"
-  },
-  "alternatives": [],
-  "reason": "Lower disruption probability and better road accessibility."
-}
+```text
+Risk
+Route recommendation
+Alerts
 ```
 
 ---
 
-# 36. AI/ML Folder Responsibilities
+# 27. Vehicle Simulator
+
+Create a GPS simulator instead of depending on physical GPS hardware.
+
+Example vehicles:
 
 ```text
-services/ml/
-
-data/
-    raw/
-    processed/
-
-features/
-    feature_pipeline.py
-
-training/
-    train_model.py
-
-models/
-    risk_model.pkl
-
-inference/
-    predictor.py
-
-evaluation/
-    metrics.py
+TRK-101
+TRK-102
+TRK-103
+TRK-104
+TRK-105
 ```
 
-### AI pipeline
+Simulator responsibilities:
 
 ```text
-Raw Data
-   ↓
-Cleaning
-   ↓
-Feature Engineering
-   ↓
-Training
-   ↓
-Validation
-   ↓
-Model
-   ↓
-Inference
-   ↓
-Risk Score
-   ↓
-Route/Alert Engine
+Move vehicle
+Send latitude
+Send longitude
+Send speed
+Send heading
+Simulate delays
+Simulate route changes
 ```
 
 ---
 
-# 37. Important Engineering Decisions
+# 28. Demo Simulation Controls
 
-## Keep AI explainable
-
-Whenever possible, return:
-
-```text
-Prediction
-+
-Risk Level
-+
-Top Reasons
-```
-
-instead of only:
-
-```text
-82%
-```
-
----
-
-## Keep external APIs replaceable
-
-Do not tightly couple the entire system to one external weather provider.
-
-Use provider interfaces.
-
----
-
-## Keep demo data controllable
-
-Create deterministic simulation controls for:
-
-```text
-Heavy rainfall
-Road blockage
-Vehicle delay
-Traffic increase
-Field incident
-Route closure
-```
-
-This allows the team to reproduce the demo every time.
-
----
-
-# 38. Demo Simulation Controls
-
-Create an internal developer/demo panel:
+Create a hidden/admin demo panel.
 
 ```text
 SIMULATION CONTROL
 
-[ Trigger Heavy Rain ]
+[ Heavy Rain ]
 
-[ Trigger Landslide ]
+[ Landslide ]
 
 [ Block Road ]
 
-[ Delay Vehicle ]
+[ Vehicle Delay ]
 
 [ Create Incident ]
 
@@ -2249,15 +1085,68 @@ SIMULATION CONTROL
 [ Reset Scenario ]
 ```
 
-This should be restricted to admin/demo mode.
-
-It will make final demonstrations much more reliable.
+These controls make the final presentation reproducible.
 
 ---
 
-# 39. Final UI Pages
+# 29. Alert Engine
 
-Recommended pages:
+## Conditions
+
+```text
+IF risk > 0.75
+    → HIGH RISK ALERT
+
+IF road = BLOCKED
+    → CRITICAL ALERT
+
+IF vehicle delay > threshold
+    → VEHICLE DELAY ALERT
+
+IF severe weather
+    → WEATHER ALERT
+```
+
+---
+
+# 30. Dashboard
+
+## Header KPIs
+
+```text
+ACTIVE VEHICLES
+AT-RISK CORRIDORS
+ACTIVE INCIDENTS
+DELIVERIES TODAY
+ON-TIME DELIVERY %
+```
+
+## Main Map
+
+Show:
+
+```text
+🚚 vehicles
+🚧 incidents
+🔴 critical roads
+🟠 high-risk roads
+🟢 safe roads
+```
+
+## Right Panel
+
+```text
+Critical Alerts
+
+Road blockage
+Weather warning
+Vehicle delay
+High disruption risk
+```
+
+---
+
+# 31. Final UI Pages
 
 ```text
 /
@@ -2276,7 +1165,7 @@ Recommended pages:
     Route Intelligence
 
 /deliveries
-    Logistics Management
+    Delivery Management
 
 /alerts
     Alert Center
@@ -2286,434 +1175,1023 @@ Recommended pages:
 
 /field
     Field Reporting
-
-/settings
-    System Settings
 ```
 
 ---
 
-# 40. Final Dashboard Layout
+# 32. 14-Day Development Plan
+
+---
+
+## DAY 1 — Architecture + Foundation
+
+### Backend
+
+* [ ] FastAPI
+* [ ] PostgreSQL
+* [ ] PostGIS
+* [ ] Health endpoint
+
+### Frontend
+
+* [ ] Next.js
+* [ ] TypeScript
+* [ ] Tailwind
+* [ ] Base layout
+
+### AI/ML
+
+* [ ] Define dataset
+* [ ] Define features
+* [ ] Define risk approach
+
+### GIS
+
+* [ ] Identify geographic data
+* [ ] Prepare road data
+
+### DevOps
+
+* [ ] Git repository
+* [ ] Docker Compose
+* [ ] Environment setup
+
+### End of Day Goal
 
 ```text
-┌────────────────────────────────────────────────────────────┐
-│ NEXUS-NER                 🔔 Alerts       Admin            │
-├───────────────┬────────────────────────────────────────────┤
-│               │                                            │
-│ Dashboard     │                                            │
-│               │                LIVE NER MAP                │
-│ Vehicles      │                                            │
-│               │       🚚                    ⚠              │
-│ Incidents     │               🚧                           │
-│               │                   🚚                       │
-│ Routes        │                                            │
-│               │                                            │
-│ Deliveries    ├────────────────────────────────────────────┤
-│               │ Active │ Risk │ Incidents │ Deliveries     │
-│ Analytics     │ Vehicles       │ Corridors │               │
-│               └────────────────────────────────────────────┘
-│ Alerts        │                                            │
-└───────────────┴────────────────────────────────────────────┘
+Frontend runs
+Backend runs
+Database runs
 ```
 
 ---
 
-# 41. Success Metrics
+# DAY 2 — Database + Seed Data
 
-The project should demonstrate improvement in areas such as:
+Build:
 
 ```text
-Reduced route decision time
-Reduced avoidable delays
-Faster incident visibility
-Improved route safety
-Improved field-to-command communication
-Better delivery visibility
-Faster response to disruptions
+vehicles
+roads
+districts
+incidents
+deliveries
+weather
+alerts
 ```
 
-Do not invent real-world percentage improvements unless they are backed by actual testing.
+Seed realistic demo data.
+
+### End of Day Goal
+
+```text
+API → Database → Realistic NER data
+```
 
 ---
 
-# 42. Final SIH Presentation Structure
+# DAY 3 — Dashboard
 
-## Slide 1
+Build:
 
-### Problem
+* [ ] Dashboard
+* [ ] Sidebar
+* [ ] KPI cards
+* [ ] Map container
+* [ ] Alerts panel
+* [ ] Vehicle panel
 
-Transportation and logistics disruption across NER.
+### End of Day Goal
 
-## Slide 2
+The application looks impressive even before AI is complete.
 
-### Existing Challenges
+---
+
+# DAY 4 — GIS
+
+Build:
+
+* [ ] Base map
+* [ ] Road network
+* [ ] Districts
+* [ ] Incidents
+* [ ] Vehicles
+* [ ] Risk colors
+* [ ] Road details
+
+### End of Day Goal
+
+A working GIS command center.
+
+---
+
+# DAY 5 — Vehicle Tracking
+
+Build:
+
+* [ ] GPS simulator
+* [ ] Telemetry API
+* [ ] WebSocket
+* [ ] Live markers
+* [ ] Vehicle status
+* [ ] ETA
+
+### End of Day Goal
+
+Vehicles move live on the map.
+
+---
+
+# DAY 6 — Field Reporting
+
+Build:
+
+* [ ] Mobile UI
+* [ ] GPS
+* [ ] Incident type
+* [ ] Severity
+* [ ] Description
+* [ ] Photo
+* [ ] Backend integration
+
+### End of Day Goal
+
+```text
+Field Report
+      ↓
+API
+      ↓
+Database
+      ↓
+Map
+```
+
+---
+
+# DAY 7 — Weather + Risk Engine
+
+Build:
+
+* [ ] Weather provider
+* [ ] Mock weather
+* [ ] Risk formula
+* [ ] Risk categories
+* [ ] Risk API
+* [ ] Map integration
+
+### End of Day Goal
+
+Changing weather changes road risk.
+
+---
+
+# DAY 8 — AI/ML
+
+Build:
+
+* [ ] Dataset
+* [ ] Feature engineering
+* [ ] Model training
+* [ ] Validation
+* [ ] Prediction API
+* [ ] Explainability
+
+### End of Day Goal
+
+The system produces a real model-driven disruption probability.
+
+---
+
+# DAY 9 — Route Optimization
+
+Build:
+
+* [ ] Graph
+* [ ] Fastest route
+* [ ] Safest route
+* [ ] Balanced route
+* [ ] Risk-aware routing
+* [ ] Alternative routes
+
+### End of Day Goal
+
+A risk change can change the recommended route.
+
+---
+
+# DAY 10 — Alerts
+
+Build:
+
+* [ ] Risk alerts
+* [ ] Road blockage alerts
+* [ ] Weather alerts
+* [ ] Vehicle delay alerts
+* [ ] WebSocket notifications
+* [ ] Acknowledgement
+
+### End of Day Goal
+
+The system automatically responds to events.
+
+---
+
+# DAY 11 — FULL INTEGRATION
+
+Connect:
+
+```text
+Weather
+   ↓
+AI Risk
+   ↓
+Road Risk
+   ↓
+Route Engine
+   ↓
+Vehicle
+```
+
+And:
+
+```text
+Field Report
+   ↓
+Incident
+   ↓
+Risk Update
+   ↓
+Alert
+   ↓
+Reroute
+```
+
+### End of Day Goal
+
+The entire hero scenario works.
+
+---
+
+# DAY 12 — Offline + Analytics
+
+Add:
+
+* [ ] Offline reporting
+* [ ] Local queue
+* [ ] Sync
+* [ ] Basic analytics
+* [ ] Delivery analytics
+
+### End of Day Goal
+
+Core prototype is feature-complete.
+
+---
+
+# DAY 13 — Testing + Polish
+
+Focus on:
+
+```text
+UI
+Performance
+Errors
+Loading
+Responsive Design
+Map
+API reliability
+Demo stability
+```
+
+### Test the full scenario repeatedly.
+
+---
+
+# DAY 14 — FREEZE + PRESENTATION
+
+Do NOT introduce major features.
+
+Focus on:
+
+* [ ] Deployment
+* [ ] Screenshots
+* [ ] Demo video
+* [ ] Presentation
+* [ ] README
+* [ ] Testing
+* [ ] Bug fixes
+* [ ] Final rehearsal
+
+---
+
+# 33. Milestones
+
+## Milestone 1
+
+### Foundation
+
+```text
+Day 1–2
+```
+
+Success:
+
+```text
+Frontend + Backend + Database
+```
+
+---
+
+## Milestone 2
+
+### Visible Prototype
+
+```text
+Day 3–4
+```
+
+Success:
+
+```text
+Dashboard + GIS
+```
+
+---
+
+## Milestone 3
+
+### Live System
+
+```text
+Day 5–6
+```
+
+Success:
+
+```text
+Vehicles + Incidents
+```
+
+---
+
+## Milestone 4
+
+### Intelligence
+
+```text
+Day 7–9
+```
+
+Success:
+
+```text
+Weather + AI + Routing
+```
+
+---
+
+## Milestone 5
+
+### Decision System
+
+```text
+Day 10–11
+```
+
+Success:
+
+```text
+Alerts + Rerouting + Integration
+```
+
+---
+
+## Milestone 6
+
+### Final Prototype
+
+```text
+Day 12–14
+```
+
+Success:
+
+```text
+Offline + Analytics + Polish + Demo
+```
+
+---
+
+# 34. Definition of Done
+
+A feature is only considered complete when:
+
+```text
+Code
++
+API
++
+Database
++
+Frontend
++
+Error Handling
++
+Testing
+```
+
+are completed where applicable.
+
+---
+
+# 35. Git Workflow
+
+## Branches
+
+```text
+main
+develop
+feature/*
+bugfix/*
+```
+
+## Example
+
+```text
+feature/dashboard
+feature/vehicle-tracking
+feature/ml-risk
+feature/route-engine
+feature/offline-sync
+```
+
+## Commit examples
+
+```text
+feat: add vehicle telemetry API
+feat: implement risk scoring
+feat: add route optimization
+fix: correct incident coordinates
+test: add route engine tests
+docs: update project architecture
+```
+
+---
+
+# 36. Team Rules
+
+### Rule 1
+
+Do not build features outside the current priority without discussion.
+
+### Rule 2
+
+Do not rewrite another member's module unnecessarily.
+
+### Rule 3
+
+API contracts must be documented.
+
+### Rule 4
+
+Database changes must be communicated.
+
+### Rule 5
+
+Never commit API keys or secrets.
+
+### Rule 6
+
+Every feature must be tested.
+
+### Rule 7
+
+Keep demo data deterministic.
+
+### Rule 8
+
+Do not claim unsupported AI accuracy.
+
+### Rule 9
+
+No major new feature after Day 13.
+
+### Rule 10
+
+The final demo must work from a clean environment.
+
+---
+
+# 37. Codex Development Rules
+
+Codex should be used as an implementation partner, not as a one-shot project generator.
+
+Before every task, tell Codex:
+
+```text
+Read README.md first.
+
+Identify the current development phase.
+
+Identify the module responsible for this task.
+
+Inspect the existing repository before modifying files.
+
+Do not rewrite working modules unnecessarily.
+
+Implement only the requested feature.
+
+Preserve existing APIs unless a change is required.
+
+Run tests and type/lint checks after implementation.
+
+Fix errors before finishing.
+
+Update README.md progress when the feature is genuinely complete.
+```
+
+### Example task
+
+```text
+Read README.md.
+
+We are currently working on PHASE 4:
+Vehicle Tracking.
+
+Implement the GPS simulator and telemetry API.
+
+Requirements:
+- 5 simulated vehicles
+- predefined routes
+- periodic GPS updates
+- WebSocket broadcast
+- live frontend marker updates
+
+Do not implement routing or AI yet.
+
+Inspect the existing architecture first.
+Reuse existing vehicle models.
+Run tests.
+```
+
+---
+
+# 38. What We Should NOT Build
+
+Avoid wasting the two-week sprint on:
+
+```text
+❌ Blockchain
+❌ Custom LLM
+❌ Complex microservices
+❌ Kubernetes
+❌ 3D globe
+❌ Facial recognition
+❌ Unnecessary chatbot
+❌ Complex IoT hardware
+❌ Huge mobile application
+❌ Overly complicated ML architecture
+```
+
+---
+
+# 39. Why Our Prototype Can Stand Out
+
+Other teams may build:
+
+```text
+Map
++
+Vehicle Markers
++
+Weather API
++
+Chatbot
+```
+
+Our prototype should demonstrate:
+
+```text
+REAL-TIME MONITORING
+        +
+PREDICTIVE RISK
+        +
+GIS INTELLIGENCE
+        +
+ROUTE OPTIMIZATION
+        +
+FIELD REPORTING
+        +
+AUTOMATIC ALERTS
+        +
+REROUTING
+```
+
+The important difference:
+
+> **The system doesn't stop at showing a problem. It recommends and demonstrates an action.**
+
+---
+
+# 40. Presentation Strategy
+
+## Slide 1 — Problem
+
+Transportation disruption in NER.
+
+## Slide 2 — Why Existing Systems Fall Short
 
 ```text
 Fragmented information
-Weather uncertainty
+Static routes
+Delayed reporting
 Poor connectivity
-Delayed field reporting
-Static routing
-Limited real-time visibility
+Limited prediction
 ```
 
-## Slide 3
-
-### Our Solution
+## Slide 3 — Our Solution
 
 NEXUS-NER.
 
-## Slide 4
-
-### Architecture
+## Slide 4 — Architecture
 
 Show:
 
 ```text
 GIS
-+
 AI/ML
-+
 Weather
-+
 GPS
-+
 Field Reports
-+
 Route Engine
+Alerts
 ```
 
-## Slide 5
+## Slide 5 — Intelligence
 
-### AI Intelligence
-
-Explain:
+Show:
 
 ```text
-Risk Prediction
-+
-Risk Scoring
-+
-Route Optimization
+Prediction
+→ Risk
+→ Route
+→ Action
 ```
 
-## Slide 6
+## Slide 6 — Live Demo
 
-### Live Demo
+Use the medical delivery scenario.
 
-Use the medical-delivery scenario.
+## Slide 7 — Impact
 
-## Slide 7
-
-### Impact
-
-Show how the platform helps:
+Show benefits for:
 
 ```text
 Authorities
+Logistics operators
+Field officers
 Drivers
-Field Officers
-Logistics Operators
-Emergency Services
+Emergency services
 ```
 
-## Slide 8
-
-### Future Scope
+## Slide 8 — Future Scope
 
 ```text
-IoT Sensors
-Satellite Data
-More Government Data
-Predictive Maintenance
-Large-scale Deployment
-Advanced Forecasting
+IoT
+Satellite data
+Government data integration
+Predictive maintenance
+Nationwide deployment
 ```
 
 ---
 
-# 43. Final Project Checklist
+# 41. Winning Demo Sequence
+
+The presentation should follow this exact order:
+
+```text
+1. Start emergency medical delivery
+        ↓
+2. Show live vehicle
+        ↓
+3. Introduce heavy rainfall
+        ↓
+4. AI risk increases
+        ↓
+5. Field officer reports landslide
+        ↓
+6. Incident appears on map
+        ↓
+7. Road becomes blocked
+        ↓
+8. Critical alert generated
+        ↓
+9. Route alternatives calculated
+        ↓
+10. Safer route recommended
+        ↓
+11. Officer clicks REROUTE
+        ↓
+12. Vehicle changes route
+        ↓
+13. ETA updates
+        ↓
+14. Delivery continues
+```
+
+---
+
+# 42. The "Wow" Factor
+
+The judges should physically see the system react.
+
+### Example
+
+Before:
+
+```text
+🟢 ROAD
+Risk: 18%
+```
+
+Trigger weather:
+
+```text
+🟠 ROAD
+Risk: 67%
+```
+
+Field report:
+
+```text
+🔴 ROAD
+BLOCKED
+```
+
+Then:
+
+```text
+Alternative Route Found
+```
+
+Then:
+
+```text
+🚚 Vehicle Rerouted
+```
+
+This visual progression is much more memorable than simply explaining an ML model.
+
+---
+
+# 43. Final Prototype Success Criteria
+
+The project is considered successful when a judge can see:
+
+### Monitor
+
+```text
+Live map
+Vehicles
+Incidents
+Weather
+```
+
+### Predict
+
+```text
+AI disruption probability
+Risk score
+Risk explanation
+```
+
+### Decide
+
+```text
+Fastest route
+Safest route
+Recommended route
+```
+
+### Act
+
+```text
+Alert
+Reroute
+Vehicle update
+```
+
+### Measure
+
+```text
+ETA
+Delivery status
+Risk
+Analytics
+```
+
+---
+
+# 44. Final Project Checklist
 
 ## Foundation
 
-* [ ] Repository created
-* [ ] Monorepo created
-* [ ] Docker configured
-* [ ] Database configured
-* [ ] Backend running
-* [ ] Frontend running
-
-## Database
-
-* [ ] Schema complete
-* [ ] PostGIS enabled
-* [ ] Seed data available
-
-## Web
-
-* [ ] Dashboard
-* [ ] Map
-* [ ] Vehicles
-* [ ] Incidents
-* [ ] Routes
-* [ ] Alerts
-* [ ] Analytics
-
-## Backend
-
-* [ ] REST APIs
-* [ ] WebSockets
-* [ ] Authentication
-* [ ] Error handling
-* [ ] Tests
-
-## AI/ML
-
-* [ ] Dataset
-* [ ] Feature engineering
-* [ ] Model
-* [ ] Evaluation
-* [ ] Prediction API
-* [ ] Risk engine
-* [ ] Explainability
+* [ ] Repository
+* [ ] Docker
+* [ ] Database
+* [ ] Backend
+* [ ] Frontend
 
 ## GIS
 
-* [ ] Road network
+* [ ] NER map
+* [ ] Roads
 * [ ] Districts
+* [ ] Incidents
 * [ ] Risk layers
-* [ ] Accessibility layers
-* [ ] Routing
 
-## Mobile
+## Vehicles
 
-* [ ] Incident reporting
-* [ ] GPS
-* [ ] Photo upload
-* [ ] Offline support
-* [ ] Sync
-
-## Logistics
-
-* [ ] Vehicle tracking
-* [ ] Deliveries
+* [ ] Simulator
+* [ ] Telemetry
+* [ ] WebSocket
+* [ ] Live map
 * [ ] ETA
+
+## AI
+
+* [ ] Dataset
+* [ ] Features
+* [ ] Model
+* [ ] Prediction
+* [ ] Risk score
+* [ ] Explainability
+
+## Routing
+
+* [ ] Fastest
+* [ ] Safest
+* [ ] Balanced
+* [ ] Alternatives
 * [ ] Rerouting
+
+## Field
+
+* [ ] Incident form
+* [ ] GPS
+* [ ] Photo
+* [ ] Offline
+* [ ] Sync
 
 ## Weather
 
 * [ ] Weather provider
-* [ ] Forecast
+* [ ] Mock scenarios
 * [ ] Risk integration
 
 ## Alerts
 
-* [ ] Alert engine
-* [ ] Critical alerts
+* [ ] Risk alert
+* [ ] Road blockage
+* [ ] Weather
+* [ ] Vehicle delay
 * [ ] Notification
-* [ ] Acknowledgement
 
-## Demo
+## Analytics
 
-* [ ] Demo data
-* [ ] Simulation controls
-* [ ] Emergency delivery
-* [ ] Weather trigger
-* [ ] Incident trigger
-* [ ] Rerouting
-* [ ] Final alert
+* [ ] Deliveries
+* [ ] Incidents
+* [ ] Vehicles
+* [ ] Risk
+* [ ] Accessibility
 
-## Deployment
+## Final
 
-* [ ] Production build
-* [ ] Environment variables
-* [ ] Database deployed
-* [ ] Backend deployed
-* [ ] Frontend deployed
-* [ ] Demo URL
-* [ ] Final testing
+* [ ] Integration
+* [ ] Testing
+* [ ] Deployment
+* [ ] Demo
+* [ ] Presentation
+* [ ] Documentation
 
 ---
 
-# 44. Final Development Principle
+# 45. Daily Progress Tracker
 
-### Build in this order:
-
-```text
-FOUNDATION
-     ↓
-DATABASE
-     ↓
-BACKEND
-     ↓
-GIS DASHBOARD
-     ↓
-VEHICLE TRACKING
-     ↓
-FIELD REPORTING
-     ↓
-WEATHER
-     ↓
-AI RISK
-     ↓
-ROUTE OPTIMIZATION
-     ↓
-ALERTS
-     ↓
-ANALYTICS
-     ↓
-INTEGRATION
-     ↓
-TESTING
-     ↓
-DEMO
-```
-
-### Never reverse this priority:
+Update this every day.
 
 ```text
-Polish before functionality
-AI before data pipeline
-Charts before backend
-Chatbot before core logistics
-Fancy animations before system reliability
+DAY 1  [ ]
+DAY 2  [ ]
+DAY 3  [ ]
+DAY 4  [ ]
+DAY 5  [ ]
+DAY 6  [ ]
+DAY 7  [ ]
+DAY 8  [ ]
+DAY 9  [ ]
+DAY 10 [ ]
+DAY 11 [ ]
+DAY 12 [ ]
+DAY 13 [ ]
+DAY 14 [ ]
 ```
 
 ---
 
-# 45. One-Line Product Pitch
+# 46. Team Progress
 
-> **NEXUS-NER is an AI-powered logistics command platform that transforms real-time road, weather, vehicle, and field data into predictive risk intelligence and safer routing decisions for the North Eastern Region.**
-
----
-
-# 46. Golden Rule for the Team
-
-> **Every feature must answer one question: does this help authorities monitor, predict, decide, or act?**
-
-If the answer is no, it is probably not a priority for the SIH prototype.
-
----
-
-# 47. Current Project Status
-
-Update this section every time the team completes a major milestone.
-
-```text
-Overall Progress: 0%
-
-PHASE 0  Planning            [ ] 
-PHASE 1  Foundation          [ ]
-PHASE 2  Database            [ ]
-PHASE 3  Dashboard            [ ]
-PHASE 4  Vehicle Tracking     [ ]
-PHASE 5  Field Reporting      [ ]
-PHASE 6  Offline Support      [ ]
-PHASE 7  Weather              [ ]
-PHASE 8  AI/ML Risk           [ ]
-PHASE 9  Route Optimization   [ ]
-PHASE 10 Alerts               [ ]
-PHASE 11 Analytics            [ ]
-PHASE 12 Integration          [ ]
-PHASE 13 Testing              [ ]
-PHASE 14 Deployment           [ ]
-PHASE 15 Final Demo           [ ]
-```
-
----
-
-# 48. Team Progress Log
-
-## Member 1 — Frontend
+## Frontend
 
 ```text
 Completed:
 -
 
-Working On:
+Working:
 -
 
-Blocked By:
+Blocked:
 -
 
 Next:
 -
 ```
 
-## Member 2 — Backend
+## Backend
 
 ```text
 Completed:
 -
 
-Working On:
+Working:
 -
 
-Blocked By:
+Blocked:
 -
 
 Next:
 -
 ```
 
-## Member 3 — AI/ML
+## AI/ML
 
 ```text
 Completed:
 -
 
-Working On:
+Working:
 -
 
-Blocked By:
+Blocked:
 -
 
 Next:
 -
 ```
 
-## Member 4 — GIS/Routing
+## GIS/Routing
 
 ```text
 Completed:
 -
 
-Working On:
+Working:
 -
 
-Blocked By:
+Blocked:
 -
 
 Next:
 -
 ```
 
-## Member 5 — Mobile
+## Mobile
 
 ```text
 Completed:
 -
 
-Working On:
+Working:
 -
 
-Blocked By:
+Blocked:
 -
 
 Next:
 -
 ```
 
-## Member 6 — DevOps/Integration
+## DevOps/Integration
 
 ```text
 Completed:
 -
 
-Working On:
+Working:
 -
 
-Blocked By:
+Blocked:
 -
 
 Next:
@@ -2722,73 +2200,57 @@ Next:
 
 ---
 
-# 49. Weekly/Session Review Template
+# 47. Final Product Statement
 
-At the end of every development session, update:
-
-```text
-DATE:
-
-What was completed?
--
-
-What is currently working?
--
-
-What is broken?
--
-
-What is blocked?
--
-
-What will be built next?
--
-
-API changes:
--
-
-Database changes:
--
-
-AI/ML changes:
--
-
-Demo readiness:
-- / 10
-```
+> **NEXUS-NER transforms fragmented transportation, weather, vehicle, and field data into a real-time decision-support system that predicts logistics disruptions, identifies safer routes, and enables authorities to respond faster.**
 
 ---
 
-# 50. Final Goal
-
-At the end of the project, a judge should be able to watch this sequence:
+# 48. Final Team Principle
 
 ```text
-1. Vehicle starts delivery
-          ↓
-2. Weather deteriorates
-          ↓
-3. AI predicts increased risk
-          ↓
-4. Field officer reports road blockage
-          ↓
-5. Incident appears on live GIS map
-          ↓
-6. Alert is generated
-          ↓
-7. Route engine calculates alternatives
-          ↓
-8. Safer route is recommended
-          ↓
-9. Officer reroutes vehicle
-          ↓
-10. Vehicle follows new route
-          ↓
-11. Delivery continues
-          ↓
-12. Analytics update
+BUILD LESS.
+BUILD IT WELL.
+CONNECT EVERYTHING.
+DEMO THE IMPACT.
 ```
 
-### That is the final NEXUS-NER experience.
+### Our goal is not:
 
-**Build the system as one connected intelligence platform — not as a collection of unrelated features.**
+> "We have many features."
+
+### Our goal is:
+
+> "Here is a real logistics problem. Watch our system detect it, predict it, recommend what to do, and execute the response."
+
+---
+
+# 49. Target State Before Submission
+
+```text
+                 NEXUS-NER
+
+             ┌───────────────┐
+             │   LIVE MAP    │
+             └───────┬───────┘
+                     │
+          ┌──────────┼──────────┐
+          │          │          │
+       VEHICLES   INCIDENTS   WEATHER
+          │          │          │
+          └──────────┼──────────┘
+                     ↓
+                 AI RISK
+                     ↓
+              ROUTE ENGINE
+                     ↓
+                  ALERT
+                     ↓
+                REROUTE
+                     ↓
+                DELIVERY
+```
+
+### If this complete loop works reliably, the prototype is ready for the hackathon.
+
+**END OF PROJECT README**
