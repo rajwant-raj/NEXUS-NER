@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXUS-NER | All-in-One Services Test Suite & Intelligence Dashboard</title>
+  <meta name="description" content="Comprehensive testing interface for all NEXUS-NER services components: Health, Feature Engineering, Prediction, Risk Engine, Routing, Recommendations, Scenarios, and Model Metrics." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Sidebar ─────────────────────────────────────────────────────────── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <div>
+        <div class="brand-name">NEXUS-NER</div>
+        <div class="brand-sub">Services Test Suite</div>
+      </div>
+    </div>
+
+    <div class="sidebar-section-label">SERVICES TESTING</div>
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item active" data-tab="health" id="nav-health">
+        <span class="nav-icon">◉</span> System Health
+      </a>
+      <a href="#" class="nav-item" data-tab="features" id="nav-features">
+        <span class="nav-icon">⚙️</span> Feature Transformer
+      </a>
+      <a href="#" class="nav-item" data-tab="predict" id="nav-predict">
+        <span class="nav-icon">🎯</span> Predict & Explain
+      </a>
+      <a href="#" class="nav-item" data-tab="risk" id="nav-risk">
+        <span class="nav-icon">⚖️</span> Multi-Signal Risk
+      </a>
+      <a href="#" class="nav-item" data-tab="routes" id="nav-routes">
+        <span class="nav-icon">🗺️</span> Route Intelligence
+      </a>
+      <a href="#" class="nav-item" data-tab="recommend" id="nav-recommend">
+        <span class="nav-icon">🧠</span> Decision Engine
+      </a>
+      <a href="#" class="nav-item" data-tab="scenarios" id="nav-scenarios">
+        <span class="nav-icon">⚡</span> Scenario Lab
+      </a>
+      <a href="#" class="nav-item" data-tab="metrics" id="nav-metrics">
+        <span class="nav-icon">📊</span> Model & Metrics
+      </a>
+      <a href="#" class="nav-item" data-tab="suite" id="nav-suite">
+        <span class="nav-icon">🧪</span> Auto Test Suite
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="api-status" id="apiStatus">
+        <span class="status-dot" id="statusDot"></span>
+        <span id="statusText">Connecting…</span>
+      </div>
+      <div class="api-url-label">API: <span id="apiUrlLabel">localhost:8000</span></div>
+      <div class="latency-label">Latency: <span id="apiLatency">—</span></div>
+    </div>
+  </aside>
+
+  <!-- ── Main Content Area ────────────────────────────────────────────────── -->
+  <main class="main">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1 class="topbar-title" id="pageTitle">System Health & Status</h1>
+        <span class="topbar-badge">SERVICES VERIFICATION · AI/ML LAYER</span>
+      </div>
+      <div class="topbar-right">
+        <div class="api-config">
+          <label for="apiBaseInput">API Base URL</label>
+          <input type="text" id="apiBaseInput" value="http://localhost:8000" spellcheck="false" />
+        </div>
+        <button class="btn btn-ghost" id="refreshBtn" title="Ping Server">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- ═══════════════════════ TAB 1: SYSTEM HEALTH ═══════════════════════ -->
+    <section class="tab-content active" id="tab-health">
+      <div class="section-desc">Verify that the FastAPI service backend is running, connected, and model artifacts are loaded.</div>
+
+      <div class="card-grid cols-4">
+        <div class="stat-card" id="statStatus">
+          <div class="stat-label">Service Health</div>
+          <div class="stat-value" id="hStatus">—</div>
+          <div class="stat-sub" id="hStatusSub">Endpoint /ai/health</div>
+        </div>
+        <div class="stat-card" id="statModel">
+          <div class="stat-label">Model Status</div>
+          <div class="stat-value" id="hModel">—</div>
+          <div class="stat-sub">risk_model.pkl</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Active Model Type</div>
+          <div class="stat-value small" id="hModelType">—</div>
+          <div class="stat-sub">Winner from training selection</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">API Response Time</div>
+          <div class="stat-value small" id="hLatency">—</div>
+          <div class="stat-sub">Round-trip latency</div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="card">
+          <div class="card-header">
+            <h2>Backend Endpoints Registry</h2>
+            <button class="btn btn-primary btn-sm" id="btnHealth">Ping Health</button>
+          </div>
+          <div class="endpoints-list">
+            <div class="endpoint-item"><span class="badge get">GET</span> <code>/ai/health</code> <span class="endpoint-desc">System health & model state</span></div>
+            <div class="endpoint-item"><span class="badge get">GET</span> <code>/ai/scenarios</code> <span class="endpoint-desc">Pre-defined simulation scenarios</span></div>
+            <div class="endpoint-item"><span class="badge post">POST</span> <code>/ai/predict-risk</code> <span class="endpoint-desc">Disruption probability & explainability</span></div>
+            <div class="endpoint-item"><span class="badge post">POST</span> <code>/ai/route-intelligence</code> <span class="endpoint-desc">Multi-route risk & ETA comparison</span></div>
+            <div class="endpoint-item"><span class="badge post">POST</span> <code>/ai/recommend-action</code> <span class="endpoint-desc">End-to-end action decision</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2>Raw Probe Response</h2>
+            <span class="badge-tag">JSON</span>
+          </div>
+          <pre class="code-block" id="healthOutput">Click "Ping Health" to test the AI service…</pre>
+        </div>
+      </div>
+
+      <div class="disclaimer-box">
+        ⚠️ <strong>Prototype Context</strong>: Models are currently trained on synthetic data simulating Northeast India transport corridors. Metric outputs represent algorithmic verification, not real-world sensor data.
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ TAB 2: FEATURE TRANSFORMER ═════════════════ -->
+    <section class="tab-content" id="tab-features">
+      <div class="section-desc">Test Module B (<code>features/feature_engineering.py</code>) to see how 18 raw inputs are transformed into 25 engineered domain features.</div>
+
+      <div class="two-col">
+        <div class="card">
+          <div class="card-header">
+            <h2>Raw Input Stream</h2>
+            <button class="btn btn-ghost btn-sm" id="btnFeatureDefaults">Reset Defaults</button>
+          </div>
+          <div class="feature-form">
+            <div class="form-section-title">🌧 Rainfall Inputs</div>
+            <div class="form-row"><label>Rain 1h (mm)</label><input type="number" id="f_r1h" value="75" min="0" max="300" oninput="calcFeatures()" /></div>
+            <div class="form-row"><label>Rain 3h (mm)</label><input type="number" id="f_r3h" value="180" min="0" max="600" oninput="calcFeatures()" /></div>
+            <div class="form-row"><label>Rain 6h (mm)</label><input type="number" id="f_r6h" value="260" min="0" max="800" oninput="calcFeatures()" /></div>
+            <div class="form-row"><label>Rain 24h (mm)</label><input type="number" id="f_r24h" value="380" min="0" max="1200" oninput="calcFeatures()" /></div>
+
+            <div class="form-section-title">🛣 Road & Traffic</div>
+            <div class="form-row"><label>Condition [0–1]</label><input type="number" id="f_rc" value="0.35" step="0.05" min="0" max="1" oninput="calcFeatures()" /></div>
+            <div class="form-row"><label>Maintenance [0–1]</label><input type="number" id="f_ms" value="0.40" step="0.05" min="0" max="1" oninput="calcFeatures()" /></div>
+            <div class="form-row"><label>Traffic [0–1]</label><input type="number" id="f_tl" value="0.70" step="0.05" min="0" max="1" oninput="calcFeatures()" /></div>
+            <div class="form-row"><label>Avg Speed (km/h)</label><input type="number" id="f_spd" value="28" min="5" max="100" oninput="calcFeatures()" /></div>
+
+            <div class="form-section-title">⛰ Terrain & History</div>
+            <div class="form-row"><label>Slope (°)</label><input type="number" id="f_sl" value="22" min="0" max="60" oninput="calcFeatures()" /></div>
+            <div class="form-row"><label>River Dist (km)</label><input type="number" id="f_rd" value="0.8" step="0.1" min="0.1" max="25" oninput="calcFeatures()" /></div>
+            <div class="form-row"><label>Hist. Incidents</label><input type="number" id="f_hi" value="6" min="0" max="25" oninput="calcFeatures()" /></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2>Transformed Composite Features (Live Client Emulation)</h2>
+            <span class="badge-tag">25 Feature Channels</span>
+          </div>
+          <div id="featureCalcResults" class="feature-calc-box">
+            <!-- Dynamically populated by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ TAB 3: PREDICT & EXPLAIN ══════════════════ -->
+    <section class="tab-content" id="tab-predict">
+      <div class="section-desc">Test Module D (Inference), Module E (Risk Engine), and Module F (Explainability) together.</div>
+
+      <div class="two-col">
+        <div class="card">
+          <div class="card-header">
+            <h2>Inference Query Features</h2>
+            <button class="btn btn-ghost btn-sm" id="btnLoadDemo">Load High-Risk Demo</button>
+          </div>
+          <form id="predictForm" class="feature-form">
+            <div class="form-row"><label>Road ID</label><input type="text" id="p_road_id" value="NH13_042" /></div>
+            
+            <div class="form-section-title">🌧 Rainfall Conditions</div>
+            <div class="form-row">
+              <label>Rainfall 1h (mm)</label>
+              <div class="input-with-value">
+                <input type="range" id="p_rainfall_1h" min="0" max="200" step="1" value="90" oninput="syncVal(this,'p_rainfall_1h_v')" />
+                <span id="p_rainfall_1h_v">90</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <label>Rainfall 3h (mm)</label>
+              <div class="input-with-value">
+                <input type="range" id="p_rainfall_3h" min="0" max="500" step="5" value="210" oninput="syncVal(this,'p_rainfall_3h_v')" />
+                <span id="p_rainfall_3h_v">210</span>
+              </div>
+            </div>
+
+            <div class="form-section-title">🚗 Traffic & Road State</div>
+            <div class="form-row">
+              <label>Traffic Level [0–1]</label>
+              <div class="input-with-value">
+                <input type="range" id="p_traffic_level" min="0" max="1" step="0.01" value="0.75" oninput="syncVal(this,'p_traffic_v',true)" />
+                <span id="p_traffic_v">0.75</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <label>Road Condition [0–1]</label>
+              <div class="input-with-value">
+                <input type="range" id="p_road_condition" min="0" max="1" step="0.01" value="0.30" oninput="syncVal(this,'p_road_v',true)" />
+                <span id="p_road_v">0.30</span>
+              </div>
+            </div>
+
+            <div class="form-section-title">⛰ Terrain & History</div>
+            <div class="form-row">
+              <label>Slope (°)</label>
+              <div class="input-with-value">
+                <input type="range" id="p_slope" min="0" max="60" step="0.5" value="18" oninput="syncVal(this,'p_slope_v')" />
+                <span id="p_slope_v">18</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <label>River Distance (km)</label>
+              <div class="input-with-value">
+                <input type="range" id="p_river_distance" min="0.1" max="20" step="0.1" value="0.9" oninput="syncVal(this,'p_river_v',true)" />
+                <span id="p_river_v">0.9</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <label>Hist. Incidents</label>
+              <div class="input-with-value">
+                <input type="range" id="p_historical_incidents" min="0" max="20" step="1" value="7" oninput="syncVal(this,'p_hist_v')" />
+                <span id="p_hist_v">7</span>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;margin-top:12px;">
+              🎯 Run Prediction & Explainability
+            </button>
+          </form>
+        </div>
+
+        <div class="predict-results-col">
+          <div class="card risk-result-card" id="riskResultCard">
+            <div class="card-header"><h2>ML Disruption Probability</h2></div>
+            <div id="riskResultContent" class="empty-state">Submit query above to run prediction.</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header"><h2>Multi-Signal Component Breakdown</h2></div>
+            <div id="riskComponents" class="empty-state">—</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header"><h2>Top Contributing Factors (Explainability)</h2></div>
+            <ol id="riskFactors" class="factors-list"><li class="empty-state">—</li></ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h2>Raw Prediction API Response</h2></div>
+        <pre class="code-block" id="predictOutput">—</pre>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ TAB 4: MULTI-SIGNAL RISK ═══════════════════ -->
+    <section class="tab-content" id="tab-risk">
+      <div class="section-desc">Interactive formula explorer for Module E (<code>risk/risk_engine.py</code>). Test how weights blend ML probability with physical signals.</div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>Weighted Risk Scoring Formula</h2>
+          <span class="badge-tag">Normalized [0, 1]</span>
+        </div>
+        <div class="formula-box">
+          <code>final_risk = 0.40·ML_prob + 0.20·Weather + 0.15·Road_Condition + 0.10·Traffic + 0.10·History + 0.05·Accessibility</code>
+        </div>
+      </div>
+
+      <div class="card-grid cols-3">
+        <div class="card">
+          <div class="card-header"><h2>Category Thresholds</h2></div>
+          <div class="threshold-legend">
+            <div class="thresh-item safe"><span class="badge safe">SAFE</span> <span>0.00 – 0.25</span></div>
+            <div class="thresh-item moderate"><span class="badge moderate">MODERATE</span> <span>0.25 – 0.50</span></div>
+            <div class="thresh-item high"><span class="badge high">HIGH</span> <span>0.50 – 0.75</span></div>
+            <div class="thresh-item critical"><span class="badge critical">CRITICAL</span> <span>0.75 – 1.00</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><h2>Weather Weight (20%)</h2></div>
+          <div class="card-body-padded">
+            <p class="small-text">Blends 1h intensity with 3h and 24h accumulated rainfall plus relative humidity penalty.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><h2>Terrain & Access (5%)</h2></div>
+          <div class="card-body-padded">
+            <p class="small-text">Applies steep slope penalty ($\gt 15^\circ$) and river proximity risk ($\lt 1.5\text{ km}$).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ TAB 5: ROUTE INTELLIGENCE ═════════════════ -->
+    <section class="tab-content" id="tab-routes">
+      <div class="section-desc">Test Module H (<code>routing/route_intelligence.py</code>) across Northeast India transit corridors.</div>
+
+      <div class="two-col">
+        <div class="card">
+          <div class="card-header"><h2>Route Configuration</h2></div>
+          <form id="routeForm" class="feature-form">
+            <div class="form-row">
+              <label>Origin</label>
+              <select id="r_origin">
+                <option value="Guwahati" selected>Guwahati (Hub)</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>Destination</label>
+              <select id="r_destination">
+                <option value="Tawang" selected>Tawang (Arunachal Pradesh)</option>
+                <option value="Aizawl">Aizawl (Mizoram)</option>
+                <option value="Itanagar">Itanagar (Arunachal Pradesh)</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>Cargo Type</label>
+              <select id="r_cargo_type">
+                <option value="medical">Medical (Safety Critical)</option>
+                <option value="supplies">Essential Supplies</option>
+                <option value="general" selected>General Cargo</option>
+                <option value="fuel">Fuel / Hazardous</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>Priority</label>
+              <select id="r_priority">
+                <option value="emergency">Emergency Priority</option>
+                <option value="standard" selected>Standard Priority</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;margin-top:12px;">
+              🗺️ Evaluate Route Graph
+            </button>
+          </form>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><h2>Multi-Route Evaluation Matrix</h2></div>
+          <div id="routeResults" class="empty-state">Submit query to evaluate route alternatives.</div>
+        </div>
+      </div>
+
+      <div class="card" id="recommendationCard" style="display:none">
+        <div class="card-header"><h2>🧠 Route Optimization Summary</h2></div>
+        <div id="routeRecommendation"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h2>Raw Route Intelligence Response</h2></div>
+        <pre class="code-block" id="routeOutput">—</pre>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ TAB 6: DECISION ENGINE ════════════════════ -->
+    <section class="tab-content" id="tab-recommend">
+      <div class="section-desc">Test Module I (<code>recommendations/decision_engine.py</code>) end-to-end action classification (predict → risk score → explain → decide).</div>
+
+      <div class="two-col">
+        <div class="card">
+          <div class="card-header">
+            <h2>Action Decision Inputs</h2>
+            <button class="btn btn-ghost btn-sm" id="btnLoadDemoRec">Load Medical Demo</button>
+          </div>
+          <form id="recommendForm" class="feature-form">
+            <div class="form-row"><label>Road ID</label><input type="text" id="rec_road_id" value="NH13_042" /></div>
+            <div class="form-row">
+              <label>Rain 1h (mm)</label>
+              <div class="input-with-value">
+                <input type="range" id="rec_r1h" min="0" max="200" step="1" value="90" oninput="syncVal(this,'rec_r1h_v')" />
+                <span id="rec_r1h_v">90</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <label>Rain 3h (mm)</label>
+              <div class="input-with-value">
+                <input type="range" id="rec_r3h" min="0" max="500" step="5" value="210" oninput="syncVal(this,'rec_r3h_v')" />
+                <span id="rec_r3h_v">210</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <label>Road Condition</label>
+              <div class="input-with-value">
+                <input type="range" id="rec_rc" min="0" max="1" step="0.01" value="0.30" oninput="syncVal(this,'rec_rc_v',true)" />
+                <span id="rec_rc_v">0.30</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <label>Traffic Level</label>
+              <div class="input-with-value">
+                <input type="range" id="rec_tl" min="0" max="1" step="0.01" value="0.75" oninput="syncVal(this,'rec_tl_v',true)" />
+                <span id="rec_tl_v">0.75</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <label>Slope (°)</label>
+              <div class="input-with-value">
+                <input type="range" id="rec_sl" min="0" max="60" step="0.5" value="18" oninput="syncVal(this,'rec_sl_v')" />
+                <span id="rec_sl_v">18</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <label>River Distance</label>
+              <div class="input-with-value">
+                <input type="range" id="rec_rd" min="0.1" max="20" step="0.1" value="0.9" oninput="syncVal(this,'rec_rd_v',true)" />
+                <span id="rec_rd_v">0.9</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <label>Hist. Incidents</label>
+              <div class="input-with-value">
+                <input type="range" id="rec_hi" min="0" max="20" step="1" value="7" oninput="syncVal(this,'rec_hi_v')" />
+                <span id="rec_hi_v">7</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <label>Cargo Type</label>
+              <select id="rec_cargo">
+                <option value="medical" selected>Medical</option>
+                <option value="general">General</option>
+                <option value="supplies">Supplies</option>
+                <option value="fuel">Fuel</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>Priority</label>
+              <select id="rec_priority">
+                <option value="emergency" selected>Emergency</option>
+                <option value="standard">Standard</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;margin-top:12px;">
+              🧠 Execute Decision Pipeline
+            </button>
+          </form>
+        </div>
+
+        <div class="card action-result-card" id="actionCard">
+          <div class="card-header"><h2>Generated Recommendation</h2></div>
+          <div id="actionResult" class="empty-state">Submit query to trigger decision classifier.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h2>Raw Decision Response</h2></div>
+        <pre class="code-block" id="recommendOutput">—</pre>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ TAB 7: SCENARIO LAB ═══════════════════════ -->
+    <section class="tab-content" id="tab-scenarios">
+      <div class="section-desc">Test Module G (<code>simulation/scenarios.py</code>) running 7 batch scenarios for SIH demonstration.</div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>Simulation Scenario Batch</h2>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <input type="text" id="scenarioRoadId" value="NH13_042" placeholder="Road ID" style="width:130px;" />
+            <button class="btn btn-primary btn-sm" id="btnScenarios">Run All 7 Scenarios</button>
+          </div>
+        </div>
+        <div id="scenariosGrid" class="scenarios-grid">
+          <div class="empty-state">Click "Run All 7 Scenarios" to generate risk simulation matrix.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h2>Raw Scenarios JSON Response</h2></div>
+        <pre class="code-block" id="scenariosOutput">—</pre>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ TAB 8: MODEL & METRICS ═════════════════════ -->
+    <section class="tab-content" id="tab-metrics">
+      <div class="section-desc">Inspect Module C artifacts: model selection scores, validation vs test metrics, and pipeline configuration.</div>
+
+      <div class="card-grid cols-4">
+        <div class="stat-card">
+          <div class="stat-label">Winning Model</div>
+          <div class="stat-value small">Logistic Regression</div>
+          <div class="stat-sub">Higher Recall on rare disruptions</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Test F1 Score</div>
+          <div class="stat-value ok">0.3123</div>
+          <div class="stat-sub">Synthetic Test Split</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Test Recall</div>
+          <div class="stat-value ok">0.5127</div>
+          <div class="stat-sub">Priority Metric (Miss fewer risks)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Test ROC-AUC</div>
+          <div class="stat-value">0.6327</div>
+          <div class="stat-sub">Discrimination capacity</div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="card">
+          <div class="card-header"><h2>Model Comparison (Validation Split)</h2></div>
+          <table class="metrics-table">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Accuracy</th>
+                <th>Precision</th>
+                <th>Recall (Priority)</th>
+                <th>F1 Score</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="winner-row">
+                <td><strong>Logistic Regression (Balanced)</strong></td>
+                <td>65.5%</td>
+                <td>24.1%</td>
+                <td><strong>55.5%</strong></td>
+                <td><strong>0.3363</strong></td>
+                <td><span class="badge safe">SELECTED</span></td>
+              </tr>
+              <tr>
+                <td>Random Forest (100 Trees)</td>
+                <td>81.2%</td>
+                <td>36.5%</td>
+                <td>26.3%</td>
+                <td>0.3054</td>
+                <td><span class="badge moderate">BASELINE</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><h2>Model Metadata & Serialization</h2></div>
+          <div class="card-body-padded">
+            <p class="small-text"><strong>Model Location</strong>: <code>services/ai/models/risk_model.pkl</code></p>
+            <p class="small-text"><strong>Metadata Location</strong>: <code>services/ai/models/model_metadata.json</code></p>
+            <p class="small-text"><strong>Input Dimension</strong>: 25 Engineered Features</p>
+            <p class="small-text"><strong>Transformer</strong>: <code>RoadFeatureEngineer</code> (StandardScaler enabled)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ TAB 9: AUTOMATED TEST SUITE ═══════════════ -->
+    <section class="tab-content" id="tab-suite">
+      <div class="section-desc">Run an automated probe across all 5 REST API endpoints directly from the browser to verify full stack integration.</div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>End-to-End API Integration Verification</h2>
+          <button class="btn btn-primary btn-sm" id="btnRunSuite">▶ Run Full Verification</button>
+        </div>
+        <div class="suite-table-container">
+          <table class="suite-table">
+            <thead>
+              <tr>
+                <th>Target Component</th>
+                <th>Method & Endpoint</th>
+                <th>Payload</th>
+                <th>Expected Outcome</th>
+                <th>Response Time</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="suiteTableBody">
+              <tr id="test-row-1">
+                <td><strong>Module J (System)</strong></td>
+                <td><code>GET /ai/health</code></td>
+                <td><em>None</em></td>
+                <td><code>status == "ok"</code>, <code>model_loaded == true</code></td>
+                <td class="suite-time">—</td>
+                <td class="suite-status"><span class="badge-pill idle">IDLE</span></td>
+              </tr>
+              <tr id="test-row-2">
+                <td><strong>Module G (Simulation)</strong></td>
+                <td><code>GET /ai/scenarios</code></td>
+                <td><code>road_id="NH13_042"</code></td>
+                <td>7 scenarios returned with risk scores</td>
+                <td class="suite-time">—</td>
+                <td class="suite-status"><span class="badge-pill idle">IDLE</span></td>
+              </tr>
+              <tr id="test-row-3">
+                <td><strong>Modules D, E, F (Predict)</strong></td>
+                <td><code>POST /ai/predict-risk</code></td>
+                <td>Road features dictionary</td>
+                <td>Probability in [0,1], 6 components, factors list</td>
+                <td class="suite-time">—</td>
+                <td class="suite-status"><span class="badge-pill idle">IDLE</span></td>
+              </tr>
+              <tr id="test-row-4">
+                <td><strong>Module H (Routing)</strong></td>
+                <td><code>POST /ai/route-intelligence</code></td>
+                <td>Guwahati $\to$ Tawang (Medical)</td>
+                <td>Fastest, Safest, Balanced routes present</td>
+                <td class="suite-time">—</td>
+                <td class="suite-status"><span class="badge-pill idle">IDLE</span></td>
+              </tr>
+              <tr id="test-row-5">
+                <td><strong>Module I (Decision)</strong></td>
+                <td><code>POST /ai/recommend-action</code></td>
+                <td>High-risk emergency cargo</td>
+                <td>Action in [WARN, REROUTE, ESCALATE, BLOCK]</td>
+                <td class="suite-time">—</td>
+                <td class="suite-status"><span class="badge-pill idle">IDLE</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Loading overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+    <div class="loading-text" id="loadingText">Processing AI Pipeline…</div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

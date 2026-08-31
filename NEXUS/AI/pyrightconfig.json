@@ -1,0 +1,11 @@
+{
+  "venvPath": ".",
+  "venv": "venv",
+  "pythonVersion": "3.13",
+  "pythonPlatform": "Windows",
+  "include": [
+    "services/ai"
+  ],
+  "reportMissingModuleSource": "warning",
+  "typeCheckingMode": "basic"
+}

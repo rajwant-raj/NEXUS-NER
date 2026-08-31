@@ -1,0 +1,99 @@
+{
+  "model_type": "Logistic Regression",
+  "trained_at": "2026-08-31T12:41:30",
+  "dataset_file": "C:\\Users\\ASUS\\Desktop\\Program\\Project\\NEXUS\\services\\ai\\data\\processed\\dataset.csv",
+  "n_train": 7000,
+  "n_val": 1500,
+  "n_test": 1500,
+  "features": [
+    "rainfall_1h",
+    "rainfall_3h",
+    "rainfall_24h",
+    "rainfall_intensity",
+    "rainfall_accumulation",
+    "rainfall_change",
+    "humidity",
+    "temperature",
+    "traffic_level",
+    "congestion_score",
+    "speed_deviation",
+    "road_condition",
+    "road_condition_score",
+    "road_age",
+    "maintenance_score",
+    "slope",
+    "elevation",
+    "river_distance",
+    "terrain_risk",
+    "historical_incidents",
+    "incident_count_7d",
+    "incident_count_30d",
+    "incident_frequency",
+    "disruption_frequency",
+    "historical_risk"
+  ],
+  "target": "disruption",
+  "metric_priority": "recall (minimise missed disruptions)",
+  "validation_metrics": {
+    "model": "Logistic Regression",
+    "split": "Validation",
+    "accuracy": 0.6553,
+    "precision": 0.2413,
+    "recall": 0.5551,
+    "f1": 0.3363,
+    "roc_auc": 0.6523
+  },
+  "test_metrics": {
+    "model": "Logistic Regression",
+    "split": "Test",
+    "accuracy": 0.6447,
+    "precision": 0.2245,
+    "recall": 0.5127,
+    "f1": 0.3123,
+    "roc_auc": 0.6327
+  },
+  "all_model_results": {
+    "Logistic Regression": {
+      "validation": {
+        "model": "Logistic Regression",
+        "split": "Validation",
+        "accuracy": 0.6553,
+        "precision": 0.2413,
+        "recall": 0.5551,
+        "f1": 0.3363,
+        "roc_auc": 0.6523
+      },
+      "test": {
+        "model": "Logistic Regression",
+        "split": "Test",
+        "accuracy": 0.6447,
+        "precision": 0.2245,
+        "recall": 0.5127,
+        "f1": 0.3123,
+        "roc_auc": 0.6327
+      }
+    },
+    "Random Forest": {
+      "validation": {
+        "model": "Random Forest",
+        "split": "Validation",
+        "accuracy": 0.812,
+        "precision": 0.3647,
+        "recall": 0.2627,
+        "f1": 0.3054,
+        "roc_auc": 0.6677
+      },
+      "test": {
+        "model": "Random Forest",
+        "split": "Test",
+        "accuracy": 0.8047,
+        "precision": 0.3314,
+        "recall": 0.2373,
+        "f1": 0.2765,
+        "roc_auc": 0.6123
+      }
+    }
+  },
+  "feature_importances": {},
+  "disclaimer": "\u26a0\ufe0f  This model was trained on SYNTHETIC data generated for prototype purposes. Metrics do NOT represent real-world performance. Replace with real operational data before production deployment."
+}
